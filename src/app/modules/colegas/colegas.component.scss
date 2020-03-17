@@ -1,0 +1,15 @@
+.container {
+  width: 800px;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+.item {
+  width: 300px;
+  height: 10px;
+  margin-bottom: 10px;
+}

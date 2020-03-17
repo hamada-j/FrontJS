@@ -1,0 +1,359 @@
+<mat-divider></mat-divider>
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="20px"
+  class="stats-cards"
+>
+  <mat-card
+    fxFlex="100"
+    class="example-card"
+    *ngFor="let product of arrProducts"
+  >
+    <mat-card-header>
+      <div mat-card-avatar class="image"></div>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>{{ product.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <div>
+      <img
+        width="100"
+        mat-card-image
+        [src]="product.photo"
+        alt="Photo of a product"
+      />
+    </div>
+
+    <mat-card-content>
+      <p>Unit Price: {{ product.unitprice }}</p>
+      <p>Unit Stock: {{ product.unitstock }}</p>
+      <p>Unit On Order: {{ product.unitonorder }}</p>
+      <p>Supplier: {{ product.fk_supplier }}</p>
+      <p>Category: {{ product.fk_category }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">Something</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<mat-divider></mat-divider>
+<div fxLayout="column" fxLayoutAlign="space-berween center" fxLayoutGap="30px">
+  <h3>Edit Product</h3>
+</div>
+<!--
+<div fxLayout="column" fxLayoutAlign="space-berween center" fxLayoutGap="30px">
+  <mat-divider> </mat-divider>
+  <form class="example-form" [formGroup]="editProduc" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Product Id</mat-label>
+        <input
+          matInput
+          type="number"
+          class="form-control"
+          formControlName="id"
+        />
+      </mat-form-field>
+    </div>
+
+    <p
+      class="error"
+      *ngIf="
+        editProduc.controls.id.errors?.required &&
+        editProduc.controls.id.touched
+      "
+    >
+      Require
+    </p>
+    <p
+      class="error"
+      *ngIf="
+        editProduc.controls.id.errors?.maxlength && editProduc.controls.id.dirty
+      "
+    >
+      Min length of Id
+      {{ editProduc.controls.id.errors.maxlength.requiredLength }}, your input
+      is {{ editProduc.controls.id.errors.maxlength.actualLength }} length
+      numbers.
+    </p>
+
+    <div class="form-group">
+      <label>Product Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+      {{ editProduc.controls.name.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.name.errors?.required &&
+          editProduc.controls.name.touched
+        "
+      >
+        Require
+      </p>
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.name.errors?.maxlength &&
+          editProduc.controls.name.dirty
+        "
+      >
+        Min length of name
+        {{ editProduc.controls.name.errors.maxlength.requiredLength }}, your
+        input is
+        {{ editProduc.controls.name.errors.maxlength.actualLength }}
+        characters.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Image</label>
+      <input type="text" class="form-control" formControlName="photo" />
+      {{ editProduc.controls.photo.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.photo.errors?.required &&
+          editProduc.controls.photo.touched
+        "
+      >
+        Require
+      </p>
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.photo.errors?.maxlength &&
+          editProduc.controls.photo.dirty
+        "
+      >
+        Min length of image
+        {{ editProduc.controls.photo.errors.maxlength.requiredLength }}, your
+        input is
+        {{ editProduc.controls.photo.errors.maxlength.actualLength }}
+        characters.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Unit Price</label>
+      <input type="number" class="form-control" formControlName="unitprice" />
+      {{ editProduc.controls.unitprice.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitprice.errors?.required &&
+          editProduc.controls.unitprice.touched
+        "
+      >
+        the field is required
+      </p>
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitprice.errors?.maxlength &&
+          editProduc.controls.unitprice.dirty
+        "
+      >
+        Min length of name
+        {{ editProduc.controls.unitprice.errors.maxlength.requiredLength }},
+        your input is
+        {{ editProduc.controls.unitprice.errors.maxlength.actualLength }}
+        url.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Unit Stock</label>
+      <input type="text" class="form-control" formControlName="unitstock" />
+      {{ editProduc.controls.unitstock.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitstock.errors?.required &&
+          editProduc.controls.unitstock.touched
+        "
+      >
+        the field is required
+      </p>
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitstock.errors?.maxlength &&
+          editProduc.controls.unitstock.dirty
+        "
+      >
+        Min length of Unit stock
+        {{ editProduc.controls.unitstock.errors.maxlength.requiredLength }},
+        your input is
+        {{ editProduc.controls.unitstock.errors.maxlength.actualLength }}
+        Units.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Unit on Order</label>
+      <input type="number" class="form-control" formControlName="unitonorder" />
+      {{ editProduc.controls.unitonorder.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitonorder.errors?.required &&
+          editProduc.controls.unitonorder.touched
+        "
+      >
+        the field is required
+      </p>
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.unitonorder.errors?.maxlength &&
+          editProduc.controls.unitonorder.dirty
+        "
+      >
+        Min length of Unit on Order
+        {{ editProduc.controls.unitonorder.errors.maxlength.requiredLength }},
+        your input is
+        {{ editProduc.controls.unitonorder.errors.maxlength.actualLength }}
+        Units.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Category</label>
+      <input type="number" class="form-control" formControlName="fk_category" />
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Hardware</mat-radio-button>
+        <mat-radio-button value="2">Software</mat-radio-button>
+        <mat-radio-button value="3">Other</mat-radio-button>
+      </mat-radio-group>
+      {{ editProduc.controls.fk_category.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.fk_category.errors?.required &&
+          editProduc.controls.fk_category.touched
+        "
+      >
+        the category is required
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Category</label>
+      <input type="number" class="form-control" formControlName="fk_supplier" />
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Oracle</mat-radio-button>
+        <mat-radio-button value="2">QP</mat-radio-button>
+        <mat-radio-button value="3">ASML</mat-radio-button>
+        <mat-radio-button value="4">Financial</mat-radio-button>
+        <mat-radio-button value="5">Quantas</mat-radio-button>
+        <mat-radio-button value="6">Ubuntu</mat-radio-button>
+        <mat-radio-button value="7">Burundi</mat-radio-button>
+      </mat-radio-group>
+      {{ editProduc.controls.fk_supplier.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.fk_supplier.errors?.required &&
+          editProduc.controls.fk_supplier.touched
+        "
+      >
+        the category is required
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label>Product Category</label>
+      <input type="text" class="form-control" formControlName="fk_category" />
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Hardware</mat-radio-button>
+        <mat-radio-button value="2">Software</mat-radio-button>
+        <mat-radio-button value="3">Other</mat-radio-button>
+      </mat-radio-group>
+      {{ editProduc.controls.fk_category.errors | json }}
+      <p
+        class="error"
+        *ngIf="
+          editProduc.controls.fk_category.errors?.required &&
+          editProduc.controls.fk_category.touched
+        "
+      >
+        the category is required
+      </p>
+    </div>
+    <button mat-raised-button color="accent" type="submit" value="Send">
+      Send
+    </button>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div fxLayout="column" fxLayoutAlign="space-berween center" fxLayoutGap="30px">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Js </mat-label>
+      <input matInput disabled value="Google" />
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Long Last Name That Will Be Truncated</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St">1</textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Address 2</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </p>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="Ex. San Francisco" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Ex. California" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Postal Code</mat-label>
+            <input
+              matInput
+              #postalCode
+              maxlength="5"
+              placeholder="Ex. 94105"
+              value="94043"
+            />
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider> -->

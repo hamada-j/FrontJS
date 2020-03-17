@@ -1,0 +1,54 @@
+<div>
+  <div class="item">
+    <mat-card class="example-card" *ngFor="let employee of arrEmployee">
+      <mat-card-header>
+        <mat-card-title
+          >{{ employee.name }} {{ employee.lastname }}</mat-card-title
+        >
+        <mat-card-subtitle> Id: {{ employee.id }} </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div>
+          <strong>{{ employee.name }}</strong> borne
+          <strong>{{ employee.birthdate }}</strong>
+          <hr />
+          <strong>{{ employee.name }}</strong> is works in the departemant of
+          <strong>{{ employee.fk_departament }} </strong>
+          <hr />
+          address is <strong>{{ employee.address }}</strong> , and you can
+          contact:
+        </div>
+
+        <ul>
+          <li>
+            - Phone is <strong> {{ employee.phone }}</strong>
+          </li>
+          <li>
+            - Em@il is <strong>{{ employee.email }}</strong>
+          </li>
+        </ul>
+      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </mat-card>
+  </div>
+</div>
+
+<!-- <img mat-card-image [src]="{{eemployee.url}}" alt="Photo of a Shiba Inu">
+    <mat-card-title>{{employee.name}} {{eemployee.lastname}}
+    </mat-card-title>
+    <mat-card-subtitle>
+
+      Id: {{eemployee.id}} & Salary: {{eemployee.salary}}
+
+    </mat-card-subtitle>
+  </mat-card-header>
+    <p>
+      {{eemployee.name}} {{eemployee.birthdate }} is works in the departemn of {{eemployee.fk_departament}} from {{eemployee.address}}, and you can contact:
+      - Phone is {{eemployee.phone}}
+      - Em@il is {{eemployee.email}}
+    </p> -->
