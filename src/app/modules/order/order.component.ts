@@ -4,12 +4,12 @@ import { RestApiService } from "src/app/api.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { SelectionModel } from "@angular/cdk/collections";
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+// export interface Order {
+//   id: number;
+//   name: string;
+//   address: string;
+//   fk_region: number;
+// }
 
 @Component({
   selector: "app-order",
@@ -18,13 +18,7 @@ export interface PeriodicElement {
 })
 export class OrderComponent implements OnInit {
   arrOrders: Order[];
-  displayedColumns: string[] = [
-    "select",
-    "position",
-    "name",
-    "weight",
-    "symbol"
-  ];
+  displayedColumns: string[] = ["select", "id", "name", "address", "fk_region"];
   dataSource = new MatTableDataSource<Order>(this.arrOrders);
   selection = new SelectionModel<Order>(true, []);
 
@@ -57,6 +51,7 @@ export class OrderComponent implements OnInit {
   }
   async ngOnInit() {
     this.arrOrders = await this.Api.getAllOrder();
+    this.dataSource = new MatTableDataSource<Order>(this.arrOrders);
     console.log(this.arrOrders);
   }
 }

@@ -1,5 +1,10 @@
-<div>
-  <div class="item">
+<div fxLayout="row wrap" fxLayoutGap="15px">
+  <div
+    class="item"
+    fxFlex.xs="calc(100% - 15px)"
+    fxFlex.lg="calc(33% - 15px)"
+    fxFlex="calc(50% - 15px)"
+  >
     <mat-card class="example-card" *ngFor="let employee of arrEmployee">
       <mat-card-header>
         <mat-card-title
