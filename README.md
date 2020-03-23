@@ -15,6 +15,7 @@ I have chosen SASS, becouse Sass is the most mature, stable, and powerful profes
 `$ npm i highcharts --save`
 `$ npm i @angular/ --save`
 `$ npm i material-components-web`
+`materialize`login/signup
 
 ## Development server
 

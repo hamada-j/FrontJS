@@ -10,17 +10,16 @@ import { CustomerComponent } from "./modules/customer/customer.component";
 import { RegionComponent } from "./modules/region/region.component";
 import { OrderComponent } from "./modules/order/order.component";
 import { ProductComponent } from "./modules/product/product.component";
-import { LoginComponent } from "./modules/login/login.component";
+import { SignInComponent } from "./sign-in/sign-in.component";
+import { SignUpComponent } from "./sign-up/sign-up.component";
 
 const routes: Routes = [
+  { path: "signup", component: SignUpComponent },
+  { path: "signin", component: SignInComponent },
   {
     path: "",
     component: DefaultComponent,
     children: [
-      {
-        path: "login",
-        component: LoginComponent
-      },
       {
         path: "",
         component: DashboardComponent

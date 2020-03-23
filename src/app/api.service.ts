@@ -20,6 +20,19 @@ export class RestApiService {
     // Initialitation Url
     this.baseUrl = "http://localhost:3000/api/";
   }
+
+  registro(formValues) {
+    return this.httpClient
+      .post(`${this.baseUrl}users/register`, formValues)
+      .toPromise();
+  }
+
+  login(formValues) {
+    return this.httpClient
+      .post(`${this.baseUrl}users/login`, formValues)
+      .toPromise();
+  }
+
   ///////////////////////////////////////////////////////////
   ////////////////// PRODUCT ////////////////////////////////
   ///////////////////////////////////////////////////////////
@@ -45,11 +58,11 @@ export class RestApiService {
 
   ////////////// Login From Mongo /////////
 
-  login(values): Promise<any> {
-    return this.httpClient
-      .post(`${this.baseUrl}client/login`, values)
-      .toPromise();
-  }
+  // login(values): Promise<any> {
+  //   return this.httpClient
+  //     .post(`${this.baseUrl}client/login`, values)
+  //     .toPromise();
+  // }
   getAllEmployee(): Promise<Employee[]> {
     return this.httpClient
       .get<Employee[]>(`${this.baseUrl}employee`)

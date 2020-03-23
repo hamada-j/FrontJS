@@ -1,0 +1,45 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="group">
+    <input type="text" class="form-control" formControlName="username" /><span
+      class="highlight"
+    ></span
+    ><span class="bar"></span>
+    <label>Username</label>
+  </div>
+  <div class="group">
+    <input type="text" class="form-control" formControlName="email" /><span
+      class="highlight"
+    ></span
+    ><span class="bar"></span>
+    <label>Email</label>
+  </div>
+  <div class="group">
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+    /><span class="highlight"></span><span class="bar"></span>
+    <label>Password</label>
+  </div>
+  <button type="submit" type="button" class="button buttonBlue">
+    Signup
+    <div class="ripples buttonRipples">
+      <span class="ripplesCircle"> </span>
+    </div>
+  </button>
+  <input type="submit" value="Enviar" />
+</form>
+<!-- <ul class="errors">
+  <li *ngFor="let error of errores">
+    {{ error.msg }}
+  </li>
+</ul> -->
+<footer>
+  <a href="http://localhost:3000/admin/login" target="_blank"
+    ><img src="../../assets/img/logotipo (1).png"
+  /></a>
+  <p>
+    You Signup in
+    <a href="http://localhost:3000/admin/login" target="_blank">JS.io</a>
+  </p>
+</footer>
