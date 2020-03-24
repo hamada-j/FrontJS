@@ -15,6 +15,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatBadgeModule } from "@angular/material/badge";
 import { HighchartsChartModule } from "highcharts-angular";
 
 import { HeaderComponent } from "./components/header/header.component";
@@ -59,9 +60,10 @@ import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
     MatRadioModule,
     MatGridListModule,
     MatCheckboxModule,
+    MatBadgeModule,
+    MatButtonToggleModule,
     RouterModule,
     HighchartsChartModule,
-    MatButtonToggleModule,
     FormsModule,
     ReactiveFormsModule
   ],
