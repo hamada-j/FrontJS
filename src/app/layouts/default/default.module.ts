@@ -18,7 +18,6 @@ import { HelpComponent } from "src/app/modules/help/help.component";
 import { ProductComponent } from "src/app/modules/product/product.component";
 import { RegionComponent } from "src/app/modules/region/region.component";
 import { CustomerComponent } from "src/app/modules/customer/customer.component";
-import { LoginComponent } from "src/app/modules/login/login.component";
 import { ColegasComponent } from "src/app/modules/colegas/colegas.component";
 import { SupplierComponent } from "src/app/modules/supplier/supplier.component";
 import { OrderComponent } from "src/app/modules/order/order.component";
@@ -34,8 +33,7 @@ import { OrderComponent } from "src/app/modules/order/order.component";
     SupplierComponent,
     ColegasComponent,
     HelpComponent,
-    RegionComponent,
-    LoginComponent
+    RegionComponent
   ],
   imports: [
     CommonModule,

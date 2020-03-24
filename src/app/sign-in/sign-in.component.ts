@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
         console.log(response["success"]);
         localStorage.setItem("token", response["success"]);
         localStorage.setItem("token_since", new Date().toString());
-        // this.router.navigate(["/"]);
+        this.router.navigate(["/"]);
       })
       .catch(err => {
         this.errores = err.error;

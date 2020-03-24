@@ -23,11 +23,11 @@ export class AreaComponent implements OnInit {
         text: "Activity"
       },
       subtitle: {
-        text: "from: Data Base"
+        text: "from: Data Base MySQL and MongoDB-Atlas"
       },
       tooltip: {
-        split: true,
-        valueSuffix: " millions"
+        shared: true,
+        crosshairs: true
       },
       credits: {
         // anular los creditos de la libreria

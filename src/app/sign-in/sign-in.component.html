@@ -8,9 +8,9 @@
     <input type="password" class="form-control" formControlName="password" />
   </div>
   <input type="submit" value="Enviar" />
-</form> -->
+</form>  -->
 
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
   <div class="group">
     <input type="text" class="form-control" formControlName="email" /><span
       class="highlight"
@@ -25,14 +25,14 @@
       formControlName="password"
     /><span class="highlight"></span><span class="bar"></span>
     <label>Password</label>
-  </div>
-  <button type="submit" type="button" class="button buttonBlue">
+  </div> -->
+<!-- <button type="submit" type="button" class="button buttonBlue">
     Signup
     <div class="ripples buttonRipples">
       <span class="ripplesCircle"> </span>
     </div>
-  </button>
-  <!-- <input type="submit" value="Enviar" /> -->
+  </button> -->
+<!-- <input type="submit" value="Enviar" />
 </form>
 <ul class="errors">
   <li *ngFor="let error of errores">
@@ -46,5 +46,43 @@
   <p>
     You Login in
     <a href="http://localhost:3000/admin/login" target="_blank">JS.io</a>
+  </p>
+</footer> -->
+
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+  <div>JS.io<span>Crew</span></div>
+</div>
+<br />
+<div class="login">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="em@il"
+      name="user"
+    /><br />
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="password"
+      name="password"
+    /><br />
+    <input type="submit" type="button" value="Login" />
+  </form>
+</div>
+
+<ul class="errors">
+  <li *ngFor="let error of errores">
+    {{ error.msg }}
+  </li>
+</ul>
+<footer>
+  <a href="http://localhost:3000/admin/login" target="_blank"
+    ><img src="../../assets/img/logotipo (1).png"
+  /></a>
+  <p>
+    <a href="http://localhost:3000/admin/login" target="_blank">JS.io&nbsp;</a>
   </p>
 </footer>

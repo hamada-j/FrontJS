@@ -4,13 +4,6 @@ import { RestApiService } from "src/app/api.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { SelectionModel } from "@angular/cdk/collections";
 
-// export interface Order {
-//   id: number;
-//   name: string;
-//   address: string;
-//   fk_region: number;
-// }
-
 @Component({
   selector: "app-order",
   templateUrl: "./order.component.html",

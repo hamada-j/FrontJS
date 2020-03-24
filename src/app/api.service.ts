@@ -154,7 +154,7 @@ export class RestApiService {
   ///////////////////////////////////////////////////////////
 
   getAllOrder(): Promise<Order[]> {
-    return this.httpClient.get<Order[]>(`${this.baseUrl}customer`).toPromise();
+    return this.httpClient.get<Order[]>(`${this.baseUrl}order`).toPromise();
   }
 
   getOrderById(pClientId): Promise<Order> {

@@ -23,23 +23,23 @@ export class DashboardService {
   bigChart() {
     return [
       {
-        name: "Asia",
+        name: "Orders",
         data: [502, 635, 809, 947, 1402, 3634, 5268]
       },
       {
-        name: "Africa",
+        name: "Customers",
         data: [106, 107, 111, 133, 221, 767, 1766]
       },
       {
-        name: "Europe",
+        name: "Suppliers",
         data: [163, 203, 276, 408, 547, 729, 628]
       },
       {
-        name: "America",
+        name: "Employee",
         data: [4000, 31, 54, 156, 339, 818, 1201]
       },
       {
-        name: "Oceania",
+        name: "JS.io Facturation",
         data: [2, 2, 2, 6, 13, 30, 46]
       }
     ];
@@ -52,43 +52,43 @@ export class DashboardService {
   pieChart() {
     return [
       {
-        name: "Chrome",
+        name: "Orders",
         y: 61.41,
         sliced: true,
         selected: true
       },
       {
-        name: "Internet Explorer",
+        name: "Orders Pending",
         y: 11.84
       },
       {
-        name: "Firefox",
+        name: "Special Orders",
         y: 10.85
       },
       {
-        name: "Edge",
+        name: "Order Canceled",
         y: 4.67
       },
       {
-        name: "Safari",
-        y: 4.18
-      },
-      {
-        name: "Sogou Explorer",
-        y: 1.64
-      },
-      {
-        name: "Opera",
-        y: 1.6
-      },
-      {
-        name: "QQ",
-        y: 1.2
-      },
-      {
-        name: "Other",
-        y: 2.61
+        name: "Others",
+        y: 11.59
       }
+      // {
+      //   name: "Sogou Explorer",
+      //   y: 1.64
+      // },
+      // {
+      //   name: "Opera",
+      //   y: 1.6
+      // },
+      // {
+      //   name: "QQ",
+      //   y: 1.2
+      // },
+      // {
+      //   name: "Other",
+      //   y: 2.61
+      // }
     ];
   }
 }

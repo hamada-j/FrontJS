@@ -1,59 +1,83 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox
-        (change)="$event ? masterToggle() : null"
-        [checked]="selection.hasValue() && isAllSelected()"
-        [indeterminate]="selection.hasValue() && !isAllSelected()"
-        [aria-label]="checkboxLabel()"
-      >
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox
-        (click)="$event.stopPropagation()"
-        (change)="$event ? selection.toggle(row) : null"
-        [checked]="selection.isSelected(row)"
-        [aria-label]="checkboxLabel(row)"
-      >
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-  <!-- Position Column -->
-
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>No. ID</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef>Address</th>
-    <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="fk_region">
-    <th mat-header-cell *matHeaderCellDef>Region</th>
-    <td mat-cell *matCellDef="let element">{{ element.fk_region }}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: displayedColumns"
-    (click)="selection.toggle(row)"
-  ></tr>
-</table>
-
 <p>order works!</p>
+<p>supplier works!</p>
+
+<mat-tab-group>
+  <mat-tab label="First">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          >
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+          >
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Position Column -->
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No. ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_region">
+        <th mat-header-cell *matHeaderCellDef>Region</th>
+        <td mat-cell *matCellDef="let element">{{ element.fk_region }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+      ></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Second"
+    ><img
+      src="https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"
+      alt=""
+    />
+  </mat-tab>
+  <mat-tab label="Third">
+    <img
+      src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
+      alt=""
+    />
+  </mat-tab>
+  <mat-tab label="First">
+    <img
+      src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
+      alt=""
+  /></mat-tab>
+  <mat-tab label="Second"><img src="" alt=""/></mat-tab>
+  <mat-tab label="Third"> <img src="" alt=""/></mat-tab>
+</mat-tab-group>
 
 {{ arrOrders | json }}

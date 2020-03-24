@@ -12,6 +12,7 @@ import { OrderComponent } from "./modules/order/order.component";
 import { ProductComponent } from "./modules/product/product.component";
 import { SignInComponent } from "./sign-in/sign-in.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
+import { LoginGuard } from "./login.guard";
 
 const routes: Routes = [
   { path: "signup", component: SignUpComponent },
@@ -19,46 +20,57 @@ const routes: Routes = [
   {
     path: "",
     component: DefaultComponent,
+    canActivate: [LoginGuard],
     children: [
       {
         path: "",
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "people",
-        component: ColegasComponent
+        component: ColegasComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "activity",
-        component: ActivityComponent
+        component: ActivityComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "product",
-        component: ProductComponent
+        component: ProductComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "order",
-        component: OrderComponent
+        component: OrderComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "region",
-        component: RegionComponent
+        component: RegionComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "customer",
-        component: CustomerComponent
+        component: CustomerComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "supplier",
-        component: SupplierComponent
+        component: SupplierComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "people",
-        component: ColegasComponent
+        component: ColegasComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: "help",
-        component: HelpComponent
+        component: HelpComponent,
+        canActivate: [LoginGuard]
       }
     ]
   }
