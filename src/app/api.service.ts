@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+// Models
 import { Product } from "./model/product";
 import { Customer } from "./model/customer";
 import { Category } from "./model/category";
@@ -9,11 +10,13 @@ import { Departament } from "./model/departament";
 import { Region } from "./model/region";
 import { Territories } from "./model/territories";
 import { Employee } from "./model/employee";
+import { Post } from "./model/post";
 
 @Injectable({
   providedIn: "root"
 })
 export class RestApiService {
+  arrPosts: Post[];
   // Url declaration base
   baseUrl: string;
   constructor(private httpClient: HttpClient) {
@@ -21,13 +24,17 @@ export class RestApiService {
     this.baseUrl = "http://localhost:3000/api/";
   }
 
-  registro(formValues) {
+  ///////////////////////////////////////////////////////////
+  ////////////////// Crew ///////////////////////////////////
+  ///////////////////////////////////////////////////////////
+
+  signup(formValues) {
     return this.httpClient
       .post(`${this.baseUrl}users/register`, formValues)
       .toPromise();
   }
 
-  login(formValues) {
+  signin(formValues) {
     return this.httpClient
       .post(`${this.baseUrl}users/login`, formValues)
       .toPromise();
@@ -276,6 +283,25 @@ export class RestApiService {
   }
 
   ///////////////////////////////////////////////////////////
+  //////////////////// INFORMATION-ACTIVITY /////////////////
+  ///////////////////////////////////////////////////////////
+
+  getInformation(): Promise<any[]> {
+    return this.httpClient.get<any[]>(`${this.baseUrl}information`).toPromise();
+  }
+  getIdInformation(pId): Promise<any[]> {
+    return this.httpClient
+      .get<any[]>(`${this.baseUrl}information/${pId}`)
+      .toPromise();
+  }
+
+  getInformaitionOne(pTerritoriesId): Promise<Territories> {
+    return this.httpClient
+      .get<Territories>(`${this.baseUrl}territorie/${pTerritoriesId}`)
+      .toPromise();
+  }
+
+  ///////////////////////////////////////////////////////////
   //////////////////// ORDERS From Mongo  ///////////////////
   ///////////////////////////////////////////////////////////
 
@@ -326,5 +352,27 @@ export class RestApiService {
     return this.httpClient
       .post(`${this.baseUrl}ordres`, productId, httpOptions)
       .toPromise();
+  }
+
+  ///////////////////////////////////////////////////////////
+  //////////////////// Posts From Mongo  ///////////////////
+  ///////////////////////////////////////////////////////////
+
+  getAllPosts(): Promise<any> {
+    return this.httpClient.get(`${this.baseUrl}posts`).toPromise();
+  }
+
+  newPost(pPost): Promise<any> {
+    return this.httpClient.post(`${this.baseUrl}posts`, pPost).toPromise();
+  }
+  agregarPost(post: Post): Promise<Post> {
+    const prom = new Promise<any>((resolve, reject) => {
+      this.arrPosts = [post, ...this.arrPosts];
+      resolve(this.arrPosts);
+      console.log(this.arrPosts);
+
+      localStorage.setItem("posts", JSON.stringify(this.arrPosts));
+    });
+    return prom;
   }
 }

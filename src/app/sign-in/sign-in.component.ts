@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     console.log(this.formulario.value);
     this.usuariosService
-      .login(this.formulario.value)
+      .signin(this.formulario.value)
       .then(response => {
         console.log(response);
         console.log(response["success"]);

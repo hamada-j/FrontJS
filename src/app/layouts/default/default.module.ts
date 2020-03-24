@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+// Material
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDividerModule } from "@angular/material/divider";
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -8,8 +10,12 @@ import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTableModule } from "@angular/material/table";
-import { DefaultComponent } from "./default.component";
+import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+// componentes
+import { DefaultComponent } from "./default.component";
 import { DashboardComponent } from "src/app/modules/dashboard/dashboard.component";
 import { ActivityComponent } from "src/app/modules/activity/activity.component";
 import { SharedModule } from "src/app/shared/shared.module";
@@ -46,7 +52,12 @@ import { OrderComponent } from "src/app/modules/order/order.component";
     MatTabsModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DashboardService]
 })

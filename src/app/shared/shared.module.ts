@@ -13,7 +13,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatGridListModule } from "@angular/material/grid-list";
-
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTabsModule } from "@angular/material/tabs";
 import { HighchartsChartModule } from "highcharts-angular";
 
@@ -26,6 +26,9 @@ import { CardsComponent } from "./widgets/cards/cards.component";
 import { PieComponent } from "./widgets/pie/pie.component";
 import { TableComponent } from "./widgets/table/table.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { BlogFormComponent } from "./widgets/blog-form/blog-form.component";
+import { BlogPostsComponent } from "./widgets/blog-posts/blog-posts.component";
+import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     AreaComponent,
     CardsComponent,
     PieComponent,
-    TableComponent
+    TableComponent,
+    BlogFormComponent,
+    BlogPostsComponent,
+    BlogUsersComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +61,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatCheckboxModule,
     RouterModule,
     HighchartsChartModule,
+    MatButtonToggleModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -65,7 +72,10 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     AreaComponent,
     CardsComponent,
     PieComponent,
-    TableComponent
+    TableComponent,
+    BlogFormComponent,
+    BlogPostsComponent,
+    BlogUsersComponent
   ]
 })
 export class SharedModule {}

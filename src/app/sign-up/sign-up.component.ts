@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     this.usuariosService
-      .registro(this.formulario.value)
+      .signup(this.formulario.value)
       .then(response => {
         console.log(response);
         this.router.navigate(["/signin"]);

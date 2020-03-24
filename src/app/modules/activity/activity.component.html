@@ -1,27 +1,299 @@
 <mat-tab-group>
-  <mat-tab label="First">
-    <img
-      src="https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg"
-      alt=""
-    />
+  <mat-tab label="All Informaion">
+    <mat-divider></mat-divider>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Poduct Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="unitprice">
+        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitprice }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="unitstock">
+        <th mat-header-cell *matHeaderCellDef>Unit Stock</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitstock }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="unitonorder">
+        <th mat-header-cell *matHeaderCellDef>Unit On Order</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitonorder }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity On Order</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="discunt">
+        <th mat-header-cell *matHeaderCellDef>Discount</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.discunt }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_category">
+        <th mat-header-cell *matHeaderCellDef>Category No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_category }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_product">
+        <th mat-header-cell *matHeaderCellDef>Product No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_product }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_orders">
+        <th mat-header-cell *matHeaderCellDef>Order No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_orders }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_customer">
+        <th mat-header-cell *matHeaderCellDef>Customer No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_customer }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_employee">
+        <th mat-header-cell *matHeaderCellDef>Employee No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_employee }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_supplier">
+        <th mat-header-cell *matHeaderCellDef>Supplier No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_supplier }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="orderdate">
+        <th mat-header-cell *matHeaderCellDef>Order Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.orderdate | date }}
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="requiredate">
+        <th mat-header-cell *matHeaderCellDef>Required Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.requiredate | date }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </mat-tab>
-  <mat-tab label="Second"
-    ><img
-      src="https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"
-      alt=""
-    />
+  <mat-tab label="Product">
+    <mat-divider></mat-divider>
+    <div class="row">
+      <form novalidate #item="ngForm" (ngSubmit)="onSubmit(pIdInformation)">
+        <mat-form-field>
+          <mat-label>Select an Product</mat-label>
+          <mat-select [(value)]="pIdInformation">
+            <div *ngFor="let option of arrProducts" v>
+              <mat-option value="{{ option.id }}">{{ option.name }}</mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Send</button>
+      </form>
+    </div>
+    <p>Product Selected Id: {{ pIdInformation }}</p>
+
+    <mat-divider></mat-divider>
+    <br />
+
+    <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Poduct Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="unitprice">
+        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitprice }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="unitstock">
+        <th mat-header-cell *matHeaderCellDef>Unit Stock</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitstock }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="unitonorder">
+        <th mat-header-cell *matHeaderCellDef>Unit On Order</th>
+        <td mat-cell *matCellDef="let element">{{ element.unitonorder }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="discunt">
+        <th mat-header-cell *matHeaderCellDef>Discount</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.discunt }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_category">
+        <th mat-header-cell *matHeaderCellDef>Category No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_category }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_product">
+        <th mat-header-cell *matHeaderCellDef>Product No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_product }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_orders">
+        <th mat-header-cell *matHeaderCellDef>Order No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_orders }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_customer">
+        <th mat-header-cell *matHeaderCellDef>Customer No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_customer }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_employee">
+        <th mat-header-cell *matHeaderCellDef>Employee No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_employee }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fk_supplier">
+        <th mat-header-cell *matHeaderCellDef>Supplier No.</th>
+        <td mat-cell *matCellDef="let element">
+          <a href="">{{ element.fk_supplier }}</a>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="orderdate">
+        <th mat-header-cell *matHeaderCellDef>Order Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.orderdate | date }}
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="requiredate">
+        <th mat-header-cell *matHeaderCellDef>Required Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.requiredate | date }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </mat-tab>
-  <mat-tab label="Third">
+  <mat-tab label="News">
+    <hr />
+    <h3>Recycling Is in Crisis. Could These Innovations Be the Answer?</h3>
     <img
       src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
       alt=""
     />
+    <hr />
+    <p>
+      Now that China is turning away the world’s recyclable waste, Australia
+      wants to ban export of the materials and increase domestic processing.
+      Here are some techniques being pursued.
+    </p>
   </mat-tab>
-  <mat-tab label="First">
-    <img
-      src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-      alt=""
-  /></mat-tab>
-  <mat-tab label="Second"><img src="" alt=""/></mat-tab>
-  <mat-tab label="Third"> <img src="" alt=""/></mat-tab>
+  <mat-tab label="Blog">
+    <div>
+      <app-widget-blog-form></app-widget-blog-form>
+    </div>
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-berween center"
+      fxLayoutGap="20px"
+      class="stats-cards"
+    >
+      <app-widget-blog-posts></app-widget-blog-posts>
+    </div>
+
+    <br />
+
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="space-berween center" fxLayoutGap="20px">
+      <div fxFlex="60">
+        <div class="mat-elevation-z8">
+          <app-widget-blog-users></app-widget-blog-users>
+        </div>
+      </div>
+      <div fxFlex="40">
+        <app-widget-blog-users></app-widget-blog-users>
+      </div>
+    </div>
+  </mat-tab>
 </mat-tab-group>
+
+<!-- <mat-tab label="Blog">
+    <div>
+      uno
+    </div>
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-berween center"
+      fxLayoutGap="20px"
+      class="stats-cards"
+    >
+      dos
+    </div>
+
+    <br />
+
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="space-berween center" fxLayoutGap="20px">
+      <div fxFlex="60">
+        <div class="mat-elevation-z8">
+          tres
+        </div>
+      </div>
+      <div fxFlex="40">
+        cuatro
+      </div>
+    </div>
+  </mat-tab> -->

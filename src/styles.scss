@@ -9,3 +9,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #303030;
 }
+*:focus {
+  background-color: none !important;
+}
