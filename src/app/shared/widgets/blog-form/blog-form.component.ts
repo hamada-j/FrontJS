@@ -21,9 +21,8 @@ export class BlogFormComponent implements OnInit {
   post: FormGroup;
   constructor(
     private servcioPosting: RestApiService,
-    private activateRoute: ActivatedRoute
-  ) // private router: Route
-  {
+    private activateRoute: ActivatedRoute // private router: Route
+  ) {
     this.arrPosting = [];
     this.post = new FormGroup({
       titulo: new FormControl(" ", [

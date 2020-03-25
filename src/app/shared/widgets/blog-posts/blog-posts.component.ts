@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./blog-posts.component.scss"]
 })
 export class BlogPostsComponent implements OnInit {
+  responseMsg: string;
+
   numPosts: number;
   arrTransito: {};
   arrPost: Post[];
@@ -21,11 +23,14 @@ export class BlogPostsComponent implements OnInit {
     this.arrTransito = {};
     this.numPosts = 0;
   }
-  handelDelete(post) {
-    console.log(post);
-    this.postService
-      .deletePost(post)
-      .then(arrNuevo => (this.arrPost = arrNuevo));
+  handelDelete(pId) {
+    this.postService.deletePost(pId).then(async response => {
+      this.responseMsg = response["message"];
+      this.arrTransito = await this.postService.getAllPosts();
+      // console.log(this.arrTransito["posts"]);
+      this.arrPost = this.arrTransito["posts"];
+      this.numPosts = this.arrTransito["count"];
+    });
   }
 
   async ngOnInit() {

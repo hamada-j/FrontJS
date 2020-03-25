@@ -366,7 +366,9 @@ export class RestApiService {
     return this.httpClient.post(`${this.baseUrl}posts`, pPost).toPromise();
   }
   deletePost(pPost): Promise<any> {
-    return this.httpClient.delete(`${this.baseUrl}posts${pPost}`).toPromise();
+    return this.httpClient
+      .delete(`${this.baseUrl}posts/delete/${pPost}`)
+      .toPromise();
   }
   getByCategoryPost(pCategoy): Promise<any> {
     return this.httpClient.get(`${this.baseUrl}posts${pCategoy}`).toPromise();

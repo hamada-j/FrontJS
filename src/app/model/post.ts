@@ -1,4 +1,5 @@
 export class Post {
+  id: string;
   titulo: string;
   autor: string;
   imagen: string;

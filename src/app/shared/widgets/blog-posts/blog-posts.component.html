@@ -3,6 +3,9 @@
     >Num. Of Messages</span
   >
 </p>
+<p>
+  {{ responseMsg }}
+</p>
 
 <div class="">
   <p>
@@ -31,15 +34,7 @@
           <mat-card-title>{{ post.autor }}</mat-card-title>
           <mat-card-subtitle>{{ post.titulo }}</mat-card-subtitle>
         </div>
-        <div class="example-button-row">
-          <button
-            mat-icon-button
-            color="basic"
-            aria-label="Example icon-button with a heart icon"
-          >
-            <mat-icon>favorite</mat-icon>
-          </button>
-        </div>
+        <div class="example-button-row"></div>
       </mat-card-header>
       <img mat-card-image [src]="post.imagen" alt="Photo" />
       <mat-card-content>
@@ -49,7 +44,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <p>{{ post.fecha }}</p>
+        <p>date: {{ post.fecha }}</p>
+        <p>Message Id: {{ post.id }}</p>
         <button mat-raised-button color="warn" (click)="handelDelete(post.id)">
           Borrar
         </button>

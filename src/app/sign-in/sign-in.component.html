@@ -1,88 +1,53 @@
-<!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label>Email</label>
-    <input type="text" class="form-control" formControlName="email" />
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" formControlName="password" />
-  </div>
-  <input type="submit" value="Enviar" />
-</form>  -->
+<div class="form">
+  <ul class="tab-group">
+    <li class="tab active">
+      <a (click)="handelClickAll($event)">signup</a>
+    </li>
+    <li class="tab">
+      <a (click)="handelClick($event)">signin</a>
+    </li>
+  </ul>
 
-<!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div class="group">
-    <input type="text" class="form-control" formControlName="email" /><span
-      class="highlight"
-    ></span
-    ><span class="bar"></span>
-    <label>Email</label>
+  <div id="signin">
+    <h1>Welcome</h1>
+
+    <form form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="field-wrap">
+        <label>Email<span class="req">*</span> </label>
+        <input
+          type="email"
+          formControlName="email"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="field-wrap">
+        <label>Password<span class="req">*</span> </label>
+        <input
+          type="password"
+          type="password"
+          formControlName="password"
+          required
+          autocomplete="on"
+        />
+      </div>
+
+      <p class="forgot">
+        <a href="http://localhost:3000/admin/login"
+          >Forgot Password? contact with admin JS.io</a
+        >
+      </p>
+
+      <button type="submit" class="button button-block">Log In</button>
+    </form>
   </div>
-  <div class="group">
-    <input
-      type="password"
-      class="form-control"
-      formControlName="password"
-    /><span class="highlight"></span><span class="bar"></span>
-    <label>Password</label>
-  </div> -->
-<!-- <button type="submit" type="button" class="button buttonBlue">
-    Signup
-    <div class="ripples buttonRipples">
-      <span class="ripplesCircle"> </span>
-    </div>
-  </button> -->
-<!-- <input type="submit" value="Enviar" />
-</form>
+</div>
 <ul class="errors">
-  <li *ngFor="let error of errores">
-    {{ error.msg }}
+  <li>
+    {{ errors }}
+  </li>
+  <li>
+    {{ errorsStatus }}
   </li>
 </ul>
-<footer>
-  <a href="http://localhost:3000/admin/login" target="_blank"
-    ><img src="../../assets/img/logotipo (1).png"
-  /></a>
-  <p>
-    You Login in
-    <a href="http://localhost:3000/admin/login" target="_blank">JS.io</a>
-  </p>
-</footer> -->
-
-<div class="body"></div>
-<div class="grad"></div>
-<div class="header">
-  <div>JS.io<span>Crew</span></div>
-</div>
-<br />
-<div class="login">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <input
-      formControlName="email"
-      type="email"
-      placeholder="em@il"
-      name="user"
-    /><br />
-    <input
-      formControlName="password"
-      type="password"
-      placeholder="password"
-      name="password"
-    /><br />
-    <input type="submit" type="button" value="Login" />
-  </form>
-</div>
-
-<ul class="errors">
-  <li *ngFor="let error of errores">
-    {{ error.msg }}
-  </li>
-</ul>
-<footer>
-  <a href="http://localhost:3000/admin/login" target="_blank"
-    ><img src="../../assets/img/logotipo (1).png"
-  /></a>
-  <p>
-    <a href="http://localhost:3000/admin/login" target="_blank">JS.io&nbsp;</a>
-  </p>
-</footer>

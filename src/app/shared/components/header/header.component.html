@@ -12,13 +12,13 @@
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
-        <li>
+        <!-- <li>
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>
           </button>
-        </li>
+        </li> -->
         <li>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="handleClickHelp()">
             <mat-icon>help_outline</mat-icon>
           </button>
         </li>
@@ -27,7 +27,7 @@
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="handleClick()">
               <mat-icon>exit_to_app</mat-icon>
               sign out
             </button>

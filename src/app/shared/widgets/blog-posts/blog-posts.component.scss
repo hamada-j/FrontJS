@@ -1,5 +1,7 @@
 .container {
-  display: inline-block;
+  display: flex;
+
+  flex-wrap: wrap;
 }
 img {
   display: block;
@@ -7,7 +9,6 @@ img {
 }
 
 .post {
+  text-align: center;
   margin-top: 5px;
-  width: 300px;
-  height: 200px;
 }

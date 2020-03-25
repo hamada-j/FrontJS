@@ -14,6 +14,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
+import { MatTreeModule } from "@angular/material/tree";
 // componentes
 import { DefaultComponent } from "./default.component";
 import { DashboardComponent } from "src/app/modules/dashboard/dashboard.component";
@@ -56,6 +57,7 @@ import { OrderComponent } from "src/app/modules/order/order.component";
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTreeModule,
     FormsModule,
     ReactiveFormsModule
   ],

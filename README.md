@@ -16,6 +16,7 @@ I have chosen SASS, becouse Sass is the most mature, stable, and powerful profes
 `$ npm i @angular/ --save`
 `$ npm i material-components-web`
 `materialize`login/signup
+`npm install jquery --save`
 
 ## Development server
 

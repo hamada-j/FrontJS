@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RestApiService } from "../api.service";
 import { Router } from "@angular/router";
 
@@ -10,18 +10,34 @@ import { Router } from "@angular/router";
 })
 export class SignUpComponent implements OnInit {
   formulario: FormGroup;
-  // errores: any[];
+  errors: string;
+  errorsStatus: string;
 
   constructor(private usuariosService: RestApiService, private router: Router) {
     this.formulario = new FormGroup({
-      username: new FormControl(""),
-      email: new FormControl(""),
-      password: new FormControl("")
+      employeeNum: new FormControl("", [
+        Validators.required,
+        Validators.minLength(5)
+      ]),
+      email: new FormControl("", [
+        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/)
+      ]),
+      password: new FormControl("", [Validators.pattern(/^(?=.*\d).{4,8}$/)])
     });
-    // this.errores = [];
+    this.errors = "";
+    this.errorsStatus = "";
   }
 
   ngOnInit(): void {}
+
+  handelClickAll($event) {
+    // console.log($event);
+    this.router.navigate(["/signup"]);
+  }
+  handelClick($event) {
+    // console.log($event);
+    this.router.navigate(["/signin"]);
+  }
 
   onSubmit() {
     this.usuariosService
@@ -31,7 +47,8 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(["/signin"]);
       })
       .catch(err => {
-        console.log(err);
+        this.errors = err.error["error"];
+        this.errorsStatus = err.statusText;
       });
   }
 }
