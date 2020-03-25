@@ -2,94 +2,87 @@
   <mat-tab label="All Informaion">
     <mat-divider></mat-divider>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Poduct Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="unitprice">
         <th mat-header-cell *matHeaderCellDef>Unit Price</th>
         <td mat-cell *matCellDef="let element">{{ element.unitprice }}</td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="unitstock">
         <th mat-header-cell *matHeaderCellDef>Unit Stock</th>
         <td mat-cell *matCellDef="let element">{{ element.unitstock }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="unitonorder">
         <th mat-header-cell *matHeaderCellDef>Unit On Order</th>
         <td mat-cell *matCellDef="let element">{{ element.unitonorder }}</td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Quantity On Order</th>
         <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="discunt">
         <th mat-header-cell *matHeaderCellDef>Discount</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.discunt }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_category">
         <th mat-header-cell *matHeaderCellDef>Category No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_category }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_product">
         <th mat-header-cell *matHeaderCellDef>Product No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_product }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_orders">
         <th mat-header-cell *matHeaderCellDef>Order No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_orders }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_customer">
         <th mat-header-cell *matHeaderCellDef>Customer No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_customer }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_employee">
         <th mat-header-cell *matHeaderCellDef>Employee No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_employee }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_supplier">
         <th mat-header-cell *matHeaderCellDef>Supplier No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_supplier }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="orderdate">
         <th mat-header-cell *matHeaderCellDef>Order Date</th>
         <td mat-cell *matCellDef="let element">
           {{ element.orderdate | date }}
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="requiredate">
         <th mat-header-cell *matHeaderCellDef>Required Date</th>
         <td mat-cell *matCellDef="let element">
@@ -122,94 +115,87 @@
     <br />
 
     <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Poduct Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="unitprice">
         <th mat-header-cell *matHeaderCellDef>Unit Price</th>
         <td mat-cell *matCellDef="let element">{{ element.unitprice }}</td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="unitstock">
         <th mat-header-cell *matHeaderCellDef>Unit Stock</th>
         <td mat-cell *matCellDef="let element">{{ element.unitstock }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="unitonorder">
         <th mat-header-cell *matHeaderCellDef>Unit On Order</th>
         <td mat-cell *matCellDef="let element">{{ element.unitonorder }}</td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Quantity</th>
         <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="discunt">
         <th mat-header-cell *matHeaderCellDef>Discount</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.discunt }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_category">
         <th mat-header-cell *matHeaderCellDef>Category No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_category }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_product">
         <th mat-header-cell *matHeaderCellDef>Product No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_product }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_orders">
         <th mat-header-cell *matHeaderCellDef>Order No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_orders }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_customer">
         <th mat-header-cell *matHeaderCellDef>Customer No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_customer }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_employee">
         <th mat-header-cell *matHeaderCellDef>Employee No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_employee }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="fk_supplier">
         <th mat-header-cell *matHeaderCellDef>Supplier No.</th>
         <td mat-cell *matCellDef="let element">
           <a href="">{{ element.fk_supplier }}</a>
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="orderdate">
         <th mat-header-cell *matHeaderCellDef>Order Date</th>
         <td mat-cell *matCellDef="let element">
           {{ element.orderdate | date }}
         </td>
       </ng-container>
-      <!-- Symbol Column -->
+
       <ng-container matColumnDef="requiredate">
         <th mat-header-cell *matHeaderCellDef>Required Date</th>
         <td mat-cell *matCellDef="let element">
@@ -267,7 +253,7 @@
   </mat-tab>
 </mat-tab-group>
 
-<!-- <mat-tab label="Blog">
+<!-- MODELO DE PLANTILLA <mat-tab label="Blog">
     <div>
       uno
     </div>

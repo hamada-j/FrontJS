@@ -366,8 +366,17 @@ export class RestApiService {
     return this.httpClient.post(`${this.baseUrl}posts`, pPost).toPromise();
   }
   deletePost(pPost): Promise<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        token: localStorage.getItem("token")
+      }),
+      body: {
+        Post: pPost
+      }
+    };
     return this.httpClient
-      .delete(`${this.baseUrl}posts/delete/${pPost}`)
+      .delete(`${this.baseUrl}posts/delete/${pPost}`, httpOptions)
       .toPromise();
   }
   getByCategoryPost(pCategoy): Promise<any> {
