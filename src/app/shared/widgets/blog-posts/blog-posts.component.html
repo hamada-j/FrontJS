@@ -15,10 +15,11 @@
       class="categoria"
       (change)="handelSearch($event)"
     >
-      <mat-button-toggle value="tech">Tech</mat-button-toggle>
-      <mat-button-toggle value="hw">HW</mat-button-toggle>
-      <mat-button-toggle value="sw">SW</mat-button-toggle>
-      <mat-button-toggle selected value="all">All</mat-button-toggle>
+      <mat-button-toggle value="general">General</mat-button-toggle>
+      <mat-button-toggle value="departament">Departament</mat-button-toggle>
+      <mat-button-toggle value="Order/Product">Order/Product</mat-button-toggle>
+      <mat-button-toggle value="Customers">Customers</mat-button-toggle>
+      <mat-button-toggle value="Suppliers">Suppliers</mat-button-toggle>
     </mat-button-toggle-group>
   </p>
 </div>
@@ -28,7 +29,7 @@
     <mat-card class="example-card col-12">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
-          <img mat-card-image [src]="post.imagen" alt="Photo" />
+          <img mat-card-image [src]="post.autorId" alt="Photo" />
         </div>
         <div class="posicion">
           <mat-card-title>{{ post.autor }}</mat-card-title>
@@ -54,7 +55,10 @@
               color="warn"
               (click)="handelDelete(post.id)"
             >
-              Borrar
+              Delete
+            </button>
+            <button mat-raised-button color="accent" (click)="handelEdit(post)">
+              Response
             </button>
           </mat-card-actions>
         </div>

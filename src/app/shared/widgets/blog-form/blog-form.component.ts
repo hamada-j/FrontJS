@@ -5,13 +5,15 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RestApiService } from "src/app/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Route } from "@angular/compiler/src/core";
+import { Employee } from "src/app/model/employee";
 @Component({
   selector: "app-widget-blog-form",
   templateUrl: "./blog-form.component.html",
   styleUrls: ["./blog-form.component.scss"]
 })
 export class BlogFormComponent implements OnInit {
-  // outp
+  userId: string;
+  employee: Employee;
   pTitulo: string;
   pAutor: string;
   pImagen: string;
@@ -22,7 +24,7 @@ export class BlogFormComponent implements OnInit {
   post: FormGroup;
   constructor(
     private servcioPosting: RestApiService,
-    private activateRoute: ActivatedRoute, // private router: Route
+    private activateRoute: ActivatedRoute,
     private router: Router
   ) {
     this.arrPosting = [];
@@ -34,7 +36,6 @@ export class BlogFormComponent implements OnInit {
       autor: new FormControl(" ", [
         Validators.required,
         Validators.minLength(3)
-        //this.autorValidator
       ]),
       imagen: new FormControl("", [
         Validators.required
@@ -59,30 +60,32 @@ export class BlogFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const date = new Date();
-    const dateConstructor = `
-    ${date.getHours()}:${date.getMinutes()},
-     ${date.getDay()}/${date.getDate()}/${date.getFullYear()}`;
+    this.post.value.autoId = this.employee["photo"];
+    this.post.value.autor = this.employee["name"];
+    const date = new Date().toISOString();
     const posting = new Post(
+      this.post.value.autoId,
       this.post.value.titulo,
       this.post.value.autor,
       this.post.value.imagen,
       this.post.value.categoria,
-      dateConstructor,
+      date,
       this.post.value.texto
     );
     this.arrPosting.push(posting);
-    this.servcioPosting.newPost(posting);
+    this.servcioPosting.newPost(posting).then(response => {
+      // console.log(response)
+      // this.post.reset();
+    });
+    this.servcioPosting.newPosts$.emit(posting);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.userId = localStorage.getItem("userId");
+    this.employee = await this.servcioPosting.getEmployeeById(this.userId);
     const titulo = this.post.controls.titulo;
     titulo.valueChanges.pipe(debounceTime(400)).subscribe(value => {
       this.pTitulo = value;
-    });
-    const autor = this.post.controls.autor;
-    autor.valueChanges.pipe(debounceTime(400)).subscribe(value => {
-      this.pAutor = value;
     });
     const imagen = this.post.controls.imagen;
     imagen.valueChanges.pipe(debounceTime(400)).subscribe(value => {

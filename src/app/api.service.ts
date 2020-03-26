@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 // Models
 import { Product } from "./model/product";
@@ -10,12 +10,20 @@ import { Departament } from "./model/departament";
 import { Region } from "./model/region";
 import { Territories } from "./model/territories";
 import { Employee } from "./model/employee";
-import { Post } from "./model/post";
+import { Post, PostEdit } from "./model/post";
+
+// Sustcribe
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class RestApiService {
+  //////// Observable-Subscribe ////////
+  newPosts$ = new EventEmitter<Post>();
+  editPosts$ = new EventEmitter<Post>();
+  //////////////////////////////////////
+
   arrPosts: Post[];
   // Url declaration base
   baseUrl: string;
@@ -385,8 +393,16 @@ export class RestApiService {
   newPost(pPost): Promise<any> {
     return this.httpClient.post(`${this.baseUrl}posts`, pPost).toPromise();
   }
+  getPostById(pPost): Promise<any> {
+    return this.httpClient.get(`${this.baseUrl}posts/${pPost}`).toPromise();
+  }
+  editPost(pBody): Promise<PostEdit> {
+    return this.httpClient
+      .post<PostEdit>(`${this.baseUrl}posts/update`, pBody)
+      .toPromise();
+  }
   deletePost(pPost): Promise<any> {
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         token: localStorage.getItem("token")

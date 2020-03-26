@@ -15,6 +15,5 @@ export class SidebarComponent implements OnInit {
   async ngOnInit() {
     this.userId = localStorage.getItem("userId");
     this.employee = await this.Api.getEmployeeById(this.userId);
-    console.log(this.employee);
   }
 }
