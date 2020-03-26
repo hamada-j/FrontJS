@@ -9,3 +9,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #303030;
 }
+button:focus {
+  background-color: transparent !important;
+}

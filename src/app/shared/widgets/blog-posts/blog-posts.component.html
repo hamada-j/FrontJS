@@ -23,9 +23,9 @@
   </p>
 </div>
 
-<div class="container">
-  <div class="post" *ngFor="let post of arrPost">
-    <mat-card class="example-card">
+<div class="">
+  <div class="post row " *ngFor="let post of arrPost">
+    <mat-card class="example-card col-12">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
           <img mat-card-image [src]="post.imagen" alt="Photo" />
@@ -36,20 +36,29 @@
         </div>
         <div class="example-button-row"></div>
       </mat-card-header>
-      <img mat-card-image [src]="post.imagen" alt="Photo" />
-      <mat-card-content>
-        <h4>{{ post.categoria }}</h4>
-        <p>
-          {{ post.texto }}
-        </p>
+
+      <mat-card-content class="row">
+        <div class="imagen">
+          <img mat-card-image [src]="post.imagen" alt="Photo" />
+        </div>
+        <div>
+          <h4>{{ post.categoria }}</h4>
+          <p>
+            {{ post.texto }}
+          </p>
+          <mat-card-actions>
+            <p>date: {{ post.fecha }}</p>
+            <p>Message Id: {{ post.id }}</p>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="handelDelete(post.id)"
+            >
+              Borrar
+            </button>
+          </mat-card-actions>
+        </div>
       </mat-card-content>
-      <mat-card-actions>
-        <p>date: {{ post.fecha }}</p>
-        <p>Message Id: {{ post.id }}</p>
-        <button mat-raised-button color="warn" (click)="handelDelete(post.id)">
-          Borrar
-        </button>
-      </mat-card-actions>
     </mat-card>
   </div>
 </div>

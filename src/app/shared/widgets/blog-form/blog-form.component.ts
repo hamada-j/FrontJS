@@ -3,7 +3,7 @@ import { debounceTime } from "rxjs/operators";
 import { Post } from "../../../model/post";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RestApiService } from "src/app/api.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Route } from "@angular/compiler/src/core";
 @Component({
   selector: "app-widget-blog-form",
@@ -11,6 +11,7 @@ import { Route } from "@angular/compiler/src/core";
   styleUrls: ["./blog-form.component.scss"]
 })
 export class BlogFormComponent implements OnInit {
+  // outp
   pTitulo: string;
   pAutor: string;
   pImagen: string;
@@ -21,7 +22,8 @@ export class BlogFormComponent implements OnInit {
   post: FormGroup;
   constructor(
     private servcioPosting: RestApiService,
-    private activateRoute: ActivatedRoute // private router: Route
+    private activateRoute: ActivatedRoute, // private router: Route
+    private router: Router
   ) {
     this.arrPosting = [];
     this.post = new FormGroup({

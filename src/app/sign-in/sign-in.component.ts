@@ -36,6 +36,7 @@ export class SignInComponent implements OnInit {
     this.usuariosService
       .signin(this.formulario.value)
       .then(response => {
+        localStorage.setItem("userId", response["userId"]);
         localStorage.setItem("token", response["success"]);
         localStorage.setItem("token_since", new Date().toString());
         this.router.navigate(["/"]);

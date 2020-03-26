@@ -1,17 +1,21 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="header">
-      <h2>
-        Hamada
-      </h2>
+      <img [src]="employee.photo" alt="Photo Profile" />
+      <h2>{{ employee.lastname }}, {{ employee.name }}</h2>
       <h4>
-        email@email.com
+        <mat-icon>email</mat-icon>
+        {{ employee.email }}
       </h4>
+      <h5><mat-icon>perm_phone_msg</mat-icon>{{ employee.phone }}</h5>
+      <h5><mat-icon>event</mat-icon>{{ employee.birthdate | date }}</h5>
+      <h5></h5>
+      <h5><mat-icon>euro_symbol</mat-icon>{{ employee.salary }}</h5>
+      <h5>
+        <mat-icon>works</mat-icon><a href="">{{ employee.fk_departament }}</a>
+      </h5>
+      <h5><mat-icon>fingerprint</mat-icon> {{ employee.id }}</h5>
     </div>
-    <img
-      src="https://www.veggieprezi.com/wp-content/uploads/2017/09/20170731_214129.jpg"
-      alt="Photo Profile"
-    />
   </div>
   <mat-divider></mat-divider>
 

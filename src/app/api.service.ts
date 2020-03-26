@@ -287,17 +287,37 @@ export class RestApiService {
   ///////////////////////////////////////////////////////////
 
   getInformation(): Promise<any[]> {
-    return this.httpClient.get<any[]>(`${this.baseUrl}information`).toPromise();
+    let httpOptions = {
+      headers: new HttpHeaders({
+        token: localStorage.getItem("token")
+      })
+    };
+    return this.httpClient
+      .get<any[]>(`${this.baseUrl}information`, httpOptions)
+      .toPromise();
   }
   getIdInformation(pId): Promise<any[]> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        token: localStorage.getItem("token")
+      })
+    };
     return this.httpClient
-      .get<any[]>(`${this.baseUrl}information/${pId}`)
+      .get<any[]>(`${this.baseUrl}information/${pId}`, httpOptions)
       .toPromise();
   }
 
   getInformaitionOne(pTerritoriesId): Promise<Territories> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        token: localStorage.getItem("token")
+      })
+    };
     return this.httpClient
-      .get<Territories>(`${this.baseUrl}territorie/${pTerritoriesId}`)
+      .get<Territories>(
+        `${this.baseUrl}territorie/${pTerritoriesId}`,
+        httpOptions
+      )
       .toPromise();
   }
 
