@@ -48,7 +48,12 @@ export class DashboardService {
   cards() {
     return [71, 63, 39, 87];
   }
-
+  cards1() {
+    return [2, 50, 20, 71];
+  }
+  cards2() {
+    return [10, 20, 39, 57];
+  }
   pieChart() {
     return [
       {

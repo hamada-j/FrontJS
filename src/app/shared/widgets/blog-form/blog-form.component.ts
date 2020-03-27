@@ -1,17 +1,22 @@
 import { Component, OnInit } from "@angular/core";
-import { debounceTime } from "rxjs/operators";
-import { Post } from "../../../model/post";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { RestApiService } from "src/app/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Route } from "@angular/compiler/src/core";
+import { debounceTime } from "rxjs/operators";
+
+import { Post } from "../../../model/post";
 import { Employee } from "src/app/model/employee";
+import { RestApiService } from "src/app/api.service";
+import { MessageComponent } from "../message/message.component";
+
 @Component({
   selector: "app-widget-blog-form",
   templateUrl: "./blog-form.component.html",
   styleUrls: ["./blog-form.component.scss"]
 })
 export class BlogFormComponent implements OnInit {
+  panelOpenState = false;
+  durationInSeconds = 5;
   userId: string;
   employee: Employee;
   pTitulo: string;
@@ -25,7 +30,8 @@ export class BlogFormComponent implements OnInit {
   constructor(
     private servcioPosting: RestApiService,
     private activateRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.arrPosting = [];
     this.post = new FormGroup({
@@ -56,6 +62,11 @@ export class BlogFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])
+    });
+  }
+  openSnackBar() {
+    this._snackBar.openFromComponent(MessageComponent, {
+      duration: this.durationInSeconds * 1000
     });
   }
 

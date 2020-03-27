@@ -32,8 +32,8 @@
           <img mat-card-image [src]="post.autorId" alt="Photo" />
         </div>
         <div class="posicion">
-          <mat-card-title>{{ post.autor }}</mat-card-title>
-          <mat-card-subtitle>{{ post.titulo }}</mat-card-subtitle>
+          <mat-card-title>User: {{ post.autor }}</mat-card-title>
+          <mat-card-subtitle>Title: {{ post.titulo }}</mat-card-subtitle>
         </div>
         <div class="example-button-row"></div>
       </mat-card-header>
@@ -43,12 +43,10 @@
           <img mat-card-image [src]="post.imagen" alt="Photo" />
         </div>
         <div>
-          <h4>{{ post.categoria }}</h4>
-          <p>
-            {{ post.texto }}
-          </p>
+          <h4>Category: {{ post.categoria }}</h4>
+          <p>Messages: {{ post.texto }}</p>
           <mat-card-actions>
-            <p>date: {{ post.fecha }}</p>
+            <p>date: {{ post.fecha | date }}</p>
             <p>Message Id: {{ post.id }}</p>
             <button
               mat-raised-button

@@ -1,75 +1,98 @@
-<div class="all">
-  <div class="formulario ">
-    <h3>Response</h3>
-    <form [formGroup]="post" (ngSubmit)="onSubmit()">
-      <div class="form">
-        <p>
-          <mat-form-field color="accent" appearance="standard">
-            <mat-label class="mat-label">Title</mat-label>
-            <input
-              autocomplete="off"
-              matInput
-              placeholder="Title of Post"
-              formControlName="titulo"
-            />
-            <mat-icon matSuffix>picture_in_picture</mat-icon>
-            <mat-hint class="mat-hint">Title</mat-hint>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field color="basic" appearance="standard">
-            <mat-label class="mat-label">Picture</mat-label>
-            <input
-              autocomplete="off"
-              matInput
-              placeholder="Add Image"
-              formControlName="imagen"
-            />
-            <mat-icon matSuffix>add_a_photo</mat-icon>
-            <mat-hint>Image</mat-hint>
-          </mat-form-field>
-        </p>
-      </div>
-      <p>
-        Category:&nbsp;&nbsp;
-        <mat-button-toggle-group
-          appearance="legacy"
-          name="fontStyle"
-          class="cateoria"
-          formControlName="categoria"
-        >
-          <mat-button-toggle value="general">General</mat-button-toggle>
-          <mat-button-toggle value="departament">Departament</mat-button-toggle>
-          <mat-button-toggle value="Order/Product"
-            >Order/Product</mat-button-toggle
-          >
-          <mat-button-toggle value="Customers">Customers</mat-button-toggle>
-          <mat-button-toggle value="Suppliers">Suppliers</mat-button-toggle>
-        </mat-button-toggle-group>
-      </p>
-      <p>
-        <mat-form-field color="accent" appearance="outline">
-          <mat-label class="mat-label">Text</mat-label>
-          <input
-            autocomplete="off"
-            matInput
-            placeholder="Text!"
-            formControlName="texto"
-          />
-          <mat-icon matSuffix>textsms</mat-icon>
-          <mat-hint>details</mat-hint>
-        </mat-form-field>
-      </p>
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Send
+      </mat-panel-title>
+      <mat-panel-description>
+        Message {{ panelOpenState ? "open" : "closed" }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-      <button
-        mat-raised-button
-        color="basic"
-        matBadgePosition="before"
-        matBadgeColor="accent"
-        type="submit"
-      >
-        Done
-      </button>
-    </form>
-  </div>
-</div>
+    <div class="all">
+      <div class="formulario ">
+        <h3>Response</h3>
+        <form [formGroup]="post" (ngSubmit)="onSubmit()">
+          <div class="form">
+            <p>
+              <mat-form-field color="accent" appearance="standard">
+                <mat-label class="mat-label">Title</mat-label>
+                <input
+                  autocomplete="off"
+                  matInput
+                  placeholder="Title of Post"
+                  formControlName="titulo"
+                />
+                <mat-icon matSuffix>picture_in_picture</mat-icon>
+                <mat-hint class="mat-hint">Title</mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field color="basic" appearance="standard">
+                <mat-label class="mat-label">Picture</mat-label>
+                <input
+                  autocomplete="off"
+                  matInput
+                  placeholder="Add Image"
+                  formControlName="imagen"
+                />
+                <mat-icon matSuffix>add_a_photo</mat-icon>
+                <mat-hint>Image</mat-hint>
+              </mat-form-field>
+            </p>
+          </div>
+          <p>
+            Category:&nbsp;&nbsp;
+            <mat-button-toggle-group
+              appearance="legacy"
+              name="fontStyle"
+              class="cateoria"
+              formControlName="categoria"
+            >
+              <mat-button-toggle value="general">General</mat-button-toggle>
+              <mat-button-toggle value="departament"
+                >Departament</mat-button-toggle
+              >
+              <mat-button-toggle value="Order/Product"
+                >Order/Product</mat-button-toggle
+              >
+              <mat-button-toggle value="Customers">Customers</mat-button-toggle>
+              <mat-button-toggle value="Suppliers">Suppliers</mat-button-toggle>
+            </mat-button-toggle-group>
+          </p>
+          <p>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label class="mat-label">Text</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                placeholder="Text!"
+                formControlName="texto"
+              />
+              <mat-icon matSuffix>textsms</mat-icon>
+              <mat-hint>details</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <button
+            mat-raised-button
+            color="basic"
+            matBadgePosition="before"
+            matBadgeColor="accent"
+            type="submit"
+            (click)="openSnackBar()"
+          >
+            Done
+          </button>
+        </form>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-form-field style="visibility: hidden;">
+  <mat-label>Snack bar duration (seconds)</mat-label>
+  <input type="number" [(ngModel)]="durationInSeconds" matInput />
+</mat-form-field>

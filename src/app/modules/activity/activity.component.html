@@ -1,5 +1,9 @@
 <mat-tab-group>
   <mat-tab label="All Informaion">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. RSD" />
+    </mat-form-field>
     <mat-divider></mat-divider>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -210,10 +214,29 @@
   <mat-tab label="News">
     <hr />
     <h3>Recycling Is in Crisis. Could These Innovations Be the Answer?</h3>
-    <img
-      src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-      alt=""
-    />
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile
+        ><img
+          src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
+          alt=""
+      /></mat-grid-tile>
+      <mat-grid-tile
+        ><img
+          src="https://lh3.googleusercontent.com/proxy/F-eFBCnaO_6Yq9MIHeyglZjj-7glt9tztVRhMx6Yw_sbRraNqV-nCqxG73aVHKOneoZQzwAVHDGdYs8oqUGvClHp1paf3jX9SiuOqKXrR4z8DfQlfBKb6KJUkxLwf_C993he4QYuioO3P6O3apmYNbh4rlw"
+          alt=""
+      /></mat-grid-tile>
+      <mat-grid-tile
+        ><img
+          src="https://www.caracteristicas.co/wp-content/uploads/2018/08/bosque-1-e1577589217640.jpg"
+          alt=""
+      /></mat-grid-tile>
+      <mat-grid-tile
+        ><img
+          src="https://fh-sites.imgix.net/sites/639/2017/01/12214648/Oceans-02.jpg?auto=compress%2Cformat&w=1000&h=1000&fit=max"
+          alt=""
+      /></mat-grid-tile>
+    </mat-grid-list>
+
     <hr />
     <p>
       Now that China is turning away the world’s recyclable waste, Australia

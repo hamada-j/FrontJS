@@ -5,7 +5,8 @@ table {
   width: 200px;
 }
 img {
-  margin-left: 250px;
+  display: block;
+  width: 100%;
 }
 h3 {
   text-align: center;
@@ -17,4 +18,9 @@ p {
 .blog {
   margin-top: 100px;
   margin-left: 50px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }

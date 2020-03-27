@@ -5,7 +5,7 @@ import { Product } from "./model/product";
 import { Customer } from "./model/customer";
 import { Category } from "./model/category";
 import { Supplier } from "./model/supplier";
-import { Order } from "./model/order";
+import { Order, addOrder, OrderDetail } from "./model/order";
 import { Departament } from "./model/departament";
 import { Region } from "./model/region";
 import { Territories } from "./model/territories";
@@ -172,15 +172,15 @@ export class RestApiService {
     return this.httpClient.get<Order[]>(`${this.baseUrl}order`).toPromise();
   }
 
-  getOrderById(pClientId): Promise<Order> {
+  getOrderById(poOrderId): Promise<Order> {
     return this.httpClient
-      .get<Order>(`${this.baseUrl}order/${pClientId}`)
+      .get<Order>(`${this.baseUrl}order/${poOrderId}`)
       .toPromise();
   }
 
-  newOrderById(pClientId): Promise<Order> {
+  newOrder(formValue): Promise<addOrder> {
     return this.httpClient
-      .post<Order>(`${this.baseUrl}order/${pClientId}`, {})
+      .post<addOrder>(`${this.baseUrl}order`, formValue)
       .toPromise();
   }
 
@@ -204,15 +204,15 @@ export class RestApiService {
     return this.httpClient.get(`${this.baseUrl}order_ord_prod`).toPromise();
   }
 
-  getOrderProductById(pOrderProductId): Promise<any> {
+  getOrderProductById(pOrderProductId): Promise<OrderDetail> {
     return this.httpClient
-      .get(`${this.baseUrl}order_ord_prod/${pOrderProductId}`)
+      .get<OrderDetail>(`${this.baseUrl}orderdetails/${pOrderProductId}`)
       .toPromise();
   }
 
-  newOrderProductById(pOrderProductId): Promise<any> {
+  newOrderProductById(pOrderProductForm): Promise<OrderDetail> {
     return this.httpClient
-      .post(`${this.baseUrl}order_ord_prod/${pOrderProductId}`, {})
+      .post<OrderDetail>(`${this.baseUrl}orderdetails`, pOrderProductForm)
       .toPromise();
   }
 

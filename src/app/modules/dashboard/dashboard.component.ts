@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   arrProducts: any;
   bigChart: {};
   cards: {};
+  cards1: {};
+  cards2: {};
   pieChart: {};
 
   displayedColumns: string[] = [
@@ -50,6 +52,8 @@ export class DashboardComponent implements OnInit {
   async ngOnInit() {
     this.bigChart = this.dashboardService.bigChart();
     this.cards = this.dashboardService.cards();
+    this.cards1 = this.dashboardService.cards1();
+    this.cards2 = this.dashboardService.cards2();
     this.pieChart = this.dashboardService.pieChart();
 
     this.arrSuppliers = await this.Api.getAllSupplier();

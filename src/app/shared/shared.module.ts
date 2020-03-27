@@ -16,6 +16,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatBadgeModule } from "@angular/material/badge";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { HighchartsChartModule } from "highcharts-angular";
 
 import { HeaderComponent } from "./components/header/header.component";
@@ -30,6 +32,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { BlogFormComponent } from "./widgets/blog-form/blog-form.component";
 import { BlogPostsComponent } from "./widgets/blog-posts/blog-posts.component";
 import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
+import { MessageComponent } from "./widgets/message/message.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
     TableComponent,
     BlogFormComponent,
     BlogPostsComponent,
-    BlogUsersComponent
+    BlogUsersComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
@@ -62,6 +66,8 @@ import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
     MatCheckboxModule,
     MatBadgeModule,
     MatButtonToggleModule,
+    MatExpansionModule,
+    MatSnackBarModule,
     RouterModule,
     HighchartsChartModule,
     FormsModule,
@@ -77,7 +83,8 @@ import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
     TableComponent,
     BlogFormComponent,
     BlogPostsComponent,
-    BlogUsersComponent
+    BlogUsersComponent,
+    MessageComponent
   ]
 })
 export class SharedModule {}

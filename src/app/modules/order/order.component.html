@@ -1,83 +1,266 @@
-<p>order works!</p>
-<p>supplier works!</p>
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
+</button>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Last name, First name"
+          formControlName="firstCtrl"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          formControlName="secondCtrl"
+          placeholder="Ex. 1 Main St, New York, NY"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper> -->
+<mat-horizontal-stepper linear>
+  <mat-step label="Make Order" completed="">
+    <div class="all">
+      <div class="formulario ">
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+          <p>
+            <mat-form-field>
+              <mat-label>Select an Customer</mat-label>
+              <mat-select formControlName="fk_customer">
+                <div *ngFor="let option of arrCustomers" v>
+                  <mat-option value="{{ option.id }}">{{
+                    option.name
+                  }}</mat-option>
+                </div>
+              </mat-select>
+            </mat-form-field>
+          </p>
 
-<mat-tab-group>
-  <mat-tab label="First">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox
-            (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
+          <p>
+            <mat-form-field color="accent" appearance="standard" completed="">
+              <mat-label class="mat-label">Required Date</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                placeholder="1900-01-01"
+                formControlName="requiredate"
+              />
+              <mat-icon matSuffix>event</mat-icon>
+              <mat-hint class="mat-hint">date</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field
+              color="accent"
+              appearance="standard"
+              completed3="false"
+            >
+              <mat-label class="mat-label">Address</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                placeholder="Address"
+                formControlName="address"
+              />
+              <mat-icon matSuffix>business</mat-icon>
+              <mat-hint class="mat-hint">Address</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <button
+            mat-raised-button
+            color="accent"
+            matBadgePosition="before"
+            matBadgeColor="accent"
+            type="submit"
+            mat-stroked-button
           >
-          </mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <mat-checkbox
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
+            Done
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <button mat-raised-button color="basic" matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+  <mat-step label="Make Order-Details">
+    <div class="all">
+      <div class="formulario ">
+        <form [formGroup]="orderDeteilsForm" (ngSubmit)="onSubmitD()">
+          <p>
+            <mat-form-field>
+              <mat-label>Select an Product</mat-label>
+              <mat-select formControlName="fk_product">
+                <div *ngFor="let option of arrProducts" v>
+                  <mat-option value="{{ option.id }}">{{
+                    option.name
+                  }}</mat-option>
+                </div>
+              </mat-select>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field
+              color="accent"
+              appearance="standard"
+              completed2="false"
+            >
+              <mat-label class="mat-label">Quantity</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                placeholder="Quantity"
+                formControlName="quantity"
+              />
+              <mat-icon matSuffix>view_module</mat-icon>
+              <mat-hint class="mat-hint">Quantity</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field
+              color="accent"
+              appearance="standard"
+              completed3="false"
+            >
+              <mat-label class="mat-label">Discount</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                placeholder="Discunt"
+                formControlName="discunt"
+              />
+              <mat-icon matSuffix>get_app</mat-icon>
+              <mat-hint class="mat-hint">discount</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <button
+            mat-raised-button
+            color="accent"
+            matBadgePosition="before"
+            matBadgeColor="accent"
+            type="submit"
+            mat-stroked-button
           >
-          </mat-checkbox>
-        </td>
-      </ng-container>
+            Done
+          </button>
+        </form>
+      </div>
+    </div>
 
-      <!-- Position Column -->
+    <div>
+      <button mat-raised-button color="basic" matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+  <mat-step label="Done" completed="false">
+    <div>
+      <div class="center">
+        <h4>Comunicate this to JS.io</h4>
+        <div
+          style="display: flex; justify-content: space-between; margin-bottom: 10px;"
+        >
+          <a mat-list-item (click)="handeleDone($event)">Data Facts</a>
+          <a mat-list-item routerLink="/" routerLinkActive="list-item-active"
+            >Back to Dashboard</a
+          >
+        </div>
+      </div>
+      <app-widget-blog-form></app-widget-blog-form>
+    </div>
 
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>No. ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
+    <div>
+      <button mat-raised-button (click)="addColumn()">Add column</button>
+      <button mat-raised-button (click)="removeColumn()">Remove column</button>
+      <button mat-raised-button (click)="shuffle()">Shuffle</button>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-      </ng-container>
+      <table mat-table [dataSource]="data" class="mat-elevation-z8">
+        <ng-container
+          [matColumnDef]="column"
+          *ngFor="let column of displayedColumns"
+        >
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+        </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef>Address</th>
-        <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-      </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+      </table>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="fk_region">
-        <th mat-header-cell *matHeaderCellDef>Region</th>
-        <td mat-cell *matCellDef="let element">{{ element.fk_region }}</td>
-      </ng-container>
+      <!-- <table mat-table>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Employe</th>
+          <td mat-cell *matCellDef="let element">
+            {{ employee.name }}:&nbsp;{{ orderDone.fk_employee }}
+          </td>
+        </ng-container>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Order No.</th>
+          <td mat-cell *matCellDef="let element">{{ orderDone.id }}</td>
+        </ng-container>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Customer No.</th>
+          <td mat-cell *matCellDef="let element">
+            {{ orderDone.fk_customer }}
+          </td>
+        </ng-container>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Order Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ orderDone.orderdate | date }}
+          </td>
+        </ng-container>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Required Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ orderDone.requiredate | date }}
+          </td>
+        </ng-container>
+        <ng-container>
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element">{{ orderDone.address }}</td>
+        </ng-container>
+      </table> -->
+    </div>
+    <div>
+      {{ orderDone }}
+    </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        (click)="selection.toggle(row)"
-      ></tr>
-    </table>
-  </mat-tab>
-  <mat-tab label="Second"
-    ><img
-      src="https://image.shutterstock.com/image-photo/colorful-flower-on-dark-tropical-260nw-721703848.jpg"
-      alt=""
-    />
-  </mat-tab>
-  <mat-tab label="Third">
-    <img
-      src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-      alt=""
-    />
-  </mat-tab>
-  <mat-tab label="First">
-    <img
-      src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-      alt=""
-  /></mat-tab>
-  <mat-tab label="Second"><img src="" alt=""/></mat-tab>
-  <mat-tab label="Third"> <img src="" alt=""/></mat-tab>
-</mat-tab-group>
-
-{{ arrOrders | json }}
+    <div>
+      <button mat-raised-button color="basic" matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+<mat-form-field style="visibility: hidden;">
+  <mat-label>Snack bar duration (seconds)</mat-label>
+  <input type="number" [(ngModel)]="durationInSeconds" matInput />
+</mat-form-field>

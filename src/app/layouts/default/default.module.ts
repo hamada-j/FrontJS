@@ -14,7 +14,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
+import { MatStepperModule } from "@angular/material/stepper";
 import { MatTreeModule } from "@angular/material/tree";
+import { MatButtonModule } from "@angular/material/button";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatInputModule } from "@angular/material/input";
+
 // componentes
 import { DefaultComponent } from "./default.component";
 import { DashboardComponent } from "src/app/modules/dashboard/dashboard.component";
@@ -58,6 +63,10 @@ import { OrderComponent } from "src/app/modules/order/order.component";
     MatFormFieldModule,
     MatSelectModule,
     MatTreeModule,
+    MatStepperModule,
+    MatInputModule,
+    MatGridListModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule
   ],

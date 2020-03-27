@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RestApiService } from "src/app/api.service";
+import { MatTableDataSource } from "@angular/material/table";
 // Models
 import { Product } from "src/app/model/product";
 import { Customer } from "src/app/model/customer";
@@ -53,6 +54,10 @@ export class ActivityComponent implements OnInit {
     this.arrInformationId = await this.Api.getIdInformation(value);
     this.dataSource2 = this.arrInformationId;
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   async ngOnInit() {
     this.arrProducts = await this.Api.getAll();
@@ -61,6 +66,6 @@ export class ActivityComponent implements OnInit {
     this.arrCustomers = await this.Api.getAllClients();
     this.arrOrders = await this.Api.getAllOrder();
     this.arrInformation = await this.Api.getInformation();
-    this.dataSource = this.arrInformation;
+    this.dataSource = new MatTableDataSource<any>(this.arrInformation);
   }
 }
