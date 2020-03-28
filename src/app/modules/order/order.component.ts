@@ -23,6 +23,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class OrderComponent implements OnInit {
   durationInSeconds: 2;
+
   arrOrders: Order[];
   arrSuppliers: Supplier[];
   arrCustomers: Customer[];
@@ -40,6 +41,7 @@ export class OrderComponent implements OnInit {
 
   orderDone: Order;
   orderDetailsDone: OrderDetail;
+  step = 0;
 
   constructor(private Api: RestApiService, private _snackBar: MatSnackBar) {
     this.arrOrders = [];
@@ -61,7 +63,6 @@ export class OrderComponent implements OnInit {
       discunt: new FormControl("")
     });
   }
-
   onSubmit() {
     this.orderForm.value.fk_employee = this.employee["id"];
     this.orderForm.value.orderdate = new Date().toISOString().substring(0, 10);
@@ -113,16 +114,6 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  async handeleDone($event) {
-    this.orderDone = await this.Api.getOrderById(
-      localStorage.getItem("orderId")
-    );
-
-    this.orderDetailsDone = await this.Api.getOrderProductById(
-      localStorage.getItem("orderDeteilId")
-    );
-  }
-
   async ngOnInit() {
     this.userId = localStorage.getItem("userId");
     this.employee = await this.Api.getEmployeeById(this.userId);
@@ -130,40 +121,25 @@ export class OrderComponent implements OnInit {
     this.arrProducts = await this.Api.getAll();
     this.arrSuppliers = await this.Api.getAllSupplier();
     this.arrCustomers = await this.Api.getAllClients();
+    this.orderDone = await this.Api.getOrderById(
+      localStorage.getItem("orderId")
+    );
+    this.orderDetailsDone = await this.Api.getOrderProductById(
+      localStorage.getItem("orderDeteilId")
+    );
   }
-
   openSnackBar() {
     this._snackBar.openFromComponent(MessageComponent, {
       duration: this.durationInSeconds * 1000
     });
   }
-  displayedColumns: string[] = ["name", "weight", "symbol", "position"];
-  columnsToDisplay: string[] = this.displayedColumns.slice();
-  data: Order[] = this.arrOrders;
-
-  addColumn() {
-    const randomColumn = Math.floor(
-      Math.random() * this.displayedColumns.length
-    );
-    this.columnsToDisplay.push(this.displayedColumns[randomColumn]);
+  setStep(index: number) {
+    this.step = index;
   }
-
-  removeColumn() {
-    if (this.columnsToDisplay.length) {
-      this.columnsToDisplay.pop();
-    }
+  nextStep() {
+    this.step++;
   }
-
-  shuffle() {
-    let currentIndex = this.columnsToDisplay.length;
-    while (0 !== currentIndex) {
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // Swap
-      let temp = this.columnsToDisplay[currentIndex];
-      this.columnsToDisplay[currentIndex] = this.columnsToDisplay[randomIndex];
-      this.columnsToDisplay[randomIndex] = temp;
-    }
+  prevStep() {
+    this.step--;
   }
 }

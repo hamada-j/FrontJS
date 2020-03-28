@@ -14,9 +14,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTreeModule } from "@angular/material/tree";
 import { MatButtonModule } from "@angular/material/button";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatInputModule } from "@angular/material/input";
 
@@ -33,6 +35,7 @@ import { CustomerComponent } from "src/app/modules/customer/customer.component";
 import { ColegasComponent } from "src/app/modules/colegas/colegas.component";
 import { SupplierComponent } from "src/app/modules/supplier/supplier.component";
 import { OrderComponent } from "src/app/modules/order/order.component";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { OrderComponent } from "src/app/modules/order/order.component";
     MatInputModule,
     MatGridListModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
     FormsModule,
     ReactiveFormsModule
   ],

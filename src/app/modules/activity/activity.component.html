@@ -5,6 +5,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. RSD" />
     </mat-form-field>
     <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Poduct Name</th>
@@ -98,7 +99,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </mat-tab>
-  <mat-tab label="Product">
+  <mat-tab label="Product Information">
     <mat-divider></mat-divider>
     <div class="row">
       <form novalidate #item="ngForm" (ngSubmit)="onSubmit(pIdInformation)">

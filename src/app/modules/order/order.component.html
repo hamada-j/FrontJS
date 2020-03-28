@@ -1,51 +1,3 @@
-<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
-</button>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          placeholder="Last name, First name"
-          formControlName="firstCtrl"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper> -->
 <mat-horizontal-stepper linear>
   <mat-step label="Make Order" completed="">
     <div class="all">
@@ -77,6 +29,17 @@
               <mat-hint class="mat-hint">date</mat-hint>
             </mat-form-field>
           </p>
+          <!-- <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Required Date</mat-label>
+              <input matInput  formControlName="requiredate" [matDatepicker]="picker" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+          </p> -->
           <p>
             <mat-form-field
               color="accent"
@@ -186,73 +149,144 @@
     <div>
       <div class="center">
         <h4>Comunicate this to JS.io</h4>
-        <div
-          style="display: flex; justify-content: space-between; margin-bottom: 10px;"
-        >
-          <a mat-list-item (click)="handeleDone($event)">Data Facts</a>
-          <a mat-list-item routerLink="/" routerLinkActive="list-item-active"
-            >Back to Dashboard</a
-          >
-        </div>
       </div>
       <app-widget-blog-form></app-widget-blog-form>
     </div>
-
     <div>
-      <button mat-raised-button (click)="addColumn()">Add column</button>
-      <button mat-raised-button (click)="removeColumn()">Remove column</button>
-      <button mat-raised-button (click)="shuffle()">Shuffle</button>
-
-      <table mat-table [dataSource]="data" class="mat-elevation-z8">
-        <ng-container
-          [matColumnDef]="column"
-          *ngFor="let column of displayedColumns"
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel
+          [expanded]="step === 0"
+          (opened)="setStep(0)"
+          hideToggle
         >
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
-        </ng-container>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Personal Data
+            </mat-panel-title>
+            <mat-panel-description>
+              Employee
+              <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-      </table>
+          <div style="display: flex; justify-content: space-between;">
+            <p>
+              Ordrer No
+              <span style="color: rgb(2, 3, 2);">{{ orderDone.id }} </span>
+            </p>
+            <p>
+              Customer No.
+              <span style="color: rgb(2, 3, 2);">{{
+                orderDone.fk_customer
+              }}</span>
+            </p>
+            <p>
+              Employe Id:
+              <span style="color: rgb(2, 3, 2);">{{
+                orderDone.fk_employee
+              }}</span>
+            </p>
+            <p>
+              Employe Name:
+              <span style="color: rgb(2, 3, 2);">{{ employee.name }}</span>
+            </p>
+          </div>
 
-      <!-- <table mat-table>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Employe</th>
-          <td mat-cell *matCellDef="let element">
-            {{ employee.name }}:&nbsp;{{ orderDone.fk_employee }}
-          </td>
-        </ng-container>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Order No.</th>
-          <td mat-cell *matCellDef="let element">{{ orderDone.id }}</td>
-        </ng-container>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Customer No.</th>
-          <td mat-cell *matCellDef="let element">
-            {{ orderDone.fk_customer }}
-          </td>
-        </ng-container>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Order Date</th>
-          <td mat-cell *matCellDef="let element">
-            {{ orderDone.orderdate | date }}
-          </td>
-        </ng-container>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Required Date</th>
-          <td mat-cell *matCellDef="let element">
-            {{ orderDone.requiredate | date }}
-          </td>
-        </ng-container>
-        <ng-container>
-          <th mat-header-cell *matHeaderCellDef>Address</th>
-          <td mat-cell *matCellDef="let element">{{ orderDone.address }}</td>
-        </ng-container>
-      </table> -->
-    </div>
-    <div>
-      {{ orderDone }}
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">
+              Next
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel
+          [expanded]="step === 1"
+          (opened)="setStep(1)"
+          hideToggle
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Order Info
+            </mat-panel-title>
+            <mat-panel-description>
+              Type the country name
+              <mat-icon>map</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div style="display: flex; justify-content: space-between;">
+            <p>
+              Product Id | Qty:
+              <span style="color: rgb(2, 3, 2);">{{
+                orderDetailsDone.fk_product
+              }}</span>
+              |
+              <span style="color: rgb(2, 3, 2);">{{
+                orderDetailsDone.quantity
+              }}</span
+              >Units
+            </p>
+            <p>
+              Discount %.
+              <span style="color: rgb(2, 3, 2);">{{
+                orderDetailsDone.discunt
+              }}</span>
+            </p>
+            <p>
+              Customer Address:
+              <span style="color: rgb(2, 3, 2);">{{ orderDone.address }}</span>
+            </p>
+          </div>
+
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">
+              Previous
+            </button>
+            <button mat-button color="primary" (click)="nextStep()">
+              Next
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel
+          [expanded]="step === 2"
+          (opened)="setStep(2)"
+          hideToggle
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Order Date
+            </mat-panel-title>
+            <mat-panel-description>
+              Inform the date
+              <mat-icon>date_range</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div style="display: flex; justify-content: space-between;">
+            <p>
+              Ordrer Date:
+              <span style="color: rgb(10, 190, 10);">{{
+                orderDone.orderdate | date
+              }}</span>
+            </p>
+            <p>
+              Required Date:
+              <span style="color: rgb(141, 9, 9);">{{
+                orderDone.requiredate | date
+              }}</span>
+            </p>
+          </div>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">
+              Previous
+            </button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
 
     <div>

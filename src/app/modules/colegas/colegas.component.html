@@ -1,46 +1,45 @@
-<div fxLayout="row wrap" fxLayoutGap="15px">
+<!-- <div fxLayout="row wrap" fxLayoutGap="15px">
+  <div>
+  <div>
   <div
     class="item"
     fxFlex.xs="calc(100% - 15px)"
     fxFlex.lg="calc(33% - 15px)"
     fxFlex="calc(50% - 15px)"
-  >
-    <mat-card class="example-card" *ngFor="let employee of arrEmployee">
-      <mat-card-header>
-        <mat-card-title
-          >{{ employee.name }} {{ employee.lastname }}</mat-card-title
-        >
-        <mat-card-subtitle> Id: {{ employee.id }} </mat-card-subtitle>
-      </mat-card-header>
+  > -->
 
-      <mat-card-content>
-        <div>
-          <strong>{{ employee.name }}</strong> borne
-          <strong>{{ employee.birthdate }}</strong>
-          <hr />
-          <strong>{{ employee.name }}</strong> is works in the departemant of
-          <strong>{{ employee.fk_departament }} </strong>
-          <hr />
-          address is <strong>{{ employee.address }}</strong> , and you can
-          contact:
-        </div>
+<div class="all">
+  <mat-card class="example-card" *ngFor="let employee of arrEmployee">
+    <mat-card-header>
+      <mat-card-title
+        >{{ employee.name }} {{ employee.lastname }}</mat-card-title
+      >
+      <mat-card-subtitle> Id: {{ employee.id }} </mat-card-subtitle>
+    </mat-card-header>
 
-        <ul>
-          <li>
-            - Phone is <strong> {{ employee.phone }}</strong>
-          </li>
-          <li>
-            - Em@il is <strong>{{ employee.email }}</strong>
-          </li>
-        </ul>
-      </mat-card-content>
-      <img
-        mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-    </mat-card>
-  </div>
+    <mat-card-content>
+      <div>
+        <strong>{{ employee.name }}</strong> borne
+        <strong>{{ employee.birthdate | date }}</strong>
+        <hr />
+        <strong>{{ employee.name }}</strong> is works in the departemant No.
+        <strong>{{ employee.fk_departament }} </strong>
+        <hr />
+        Address is <strong>{{ employee.address }}</strong
+        >.
+      </div>
+
+      <ul>
+        <li>
+          - Phone is <strong> {{ employee.phone }}</strong>
+        </li>
+        <li>
+          - Em@il is <strong>{{ employee.email }}</strong>
+        </li>
+      </ul>
+    </mat-card-content>
+    <img mat-card-image src="{{ employee.photo }}" alt="Photo of a Shiba Inu" />
+  </mat-card>
 </div>
 
 <!-- <img mat-card-image [src]="{{eemployee.url}}" alt="Photo of a Shiba Inu">
