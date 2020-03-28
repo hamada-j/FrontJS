@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { AgmCoreModule } from "@agm/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { MatDividerModule } from "@angular/material/divider";
@@ -33,6 +34,10 @@ import { BlogFormComponent } from "./widgets/blog-form/blog-form.component";
 import { BlogPostsComponent } from "./widgets/blog-posts/blog-posts.component";
 import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
 import { MessageComponent } from "./widgets/message/message.component";
+import { MapsComponent } from "./widgets/maps/maps.component";
+import { environment } from "src/environments/environment";
+
+/// Google Map
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import { MessageComponent } from "./widgets/message/message.component";
     BlogFormComponent,
     BlogPostsComponent,
     BlogUsersComponent,
-    MessageComponent
+    MessageComponent,
+    MapsComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +77,8 @@ import { MessageComponent } from "./widgets/message/message.component";
     RouterModule,
     HighchartsChartModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey })
   ],
   exports: [
     HeaderComponent,
@@ -84,7 +91,8 @@ import { MessageComponent } from "./widgets/message/message.component";
     BlogFormComponent,
     BlogPostsComponent,
     BlogUsersComponent,
-    MessageComponent
+    MessageComponent,
+    MapsComponent
   ]
 })
 export class SharedModule {}

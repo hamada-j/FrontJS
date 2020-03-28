@@ -1,0 +1,16 @@
+<div *ngIf="lat && lng">
+  <agm-map
+    style="height: 200px;"
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    (mapClick)="mapClick($event)"
+    (mapDblClick)="mapDobleClick($event)"
+  >
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window>
+        You are here!
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

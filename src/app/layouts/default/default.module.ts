@@ -21,6 +21,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatInputModule } from "@angular/material/input";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 // componentes
 import { DefaultComponent } from "./default.component";
@@ -36,6 +37,7 @@ import { ColegasComponent } from "src/app/modules/colegas/colegas.component";
 import { SupplierComponent } from "src/app/modules/supplier/supplier.component";
 import { OrderComponent } from "src/app/modules/order/order.component";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -70,9 +72,11 @@ import { MatNativeDateModule } from "@angular/material/core";
     MatInputModule,
     MatGridListModule,
     MatButtonModule,
+    MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule
   ],

@@ -1,13 +1,19 @@
 import { Injectable } from "@angular/core";
 import { RestApiService } from "../api.service";
 import { Product } from "../model/product";
+import { HttpClient } from "@angular/common/http";
+import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { merge, Observable, of as observableOf } from "rxjs";
+import { catchError, map, startWith, switchMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class DashboardService {
   arrProducts: Product[];
-  constructor(private Api: RestApiService) {}
+  constructor(private Api: RestApiService, private _httpClient: HttpClient) {}
 
   getArray() {
     this.Api.getAll()
@@ -96,4 +102,27 @@ export class DashboardService {
       // }
     ];
   }
+
+  getRepoIssues(
+    sort: string,
+    order: string,
+    page: number
+  ): Observable<GithubApi> {
+    const href = "https://api.github.com/search/issues";
+    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page +
+      1}`;
+
+    return this._httpClient.get<GithubApi>(requestUrl);
+  }
+}
+export interface GithubApi {
+  items: GithubIssue[];
+  total_count: number;
+}
+
+export interface GithubIssue {
+  created_at: string;
+  number: string;
+  state: string;
+  title: string;
 }

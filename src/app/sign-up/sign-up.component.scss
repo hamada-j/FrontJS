@@ -1,5 +1,5 @@
 $body-bg: #c1bdba;
-$form-bg: #13232f;
+$form-bg: #202122;
 $white: #ffffff;
 
 $main: #4d5e59;
@@ -13,6 +13,10 @@ $thin: 300;
 $normal: 400;
 $bold: 600;
 $br: 4px;
+
+input {
+  margin: 0 0 32px -11px !important;
+}
 
 *,
 *:before,
