@@ -1,20 +1,37 @@
-<div class="all" *ngIf="lat && lng">
-  <agm-map
-    style="height: 200px;"
-    [latitude]="lat"
-    [longitude]="lng"
-    [zoom]="zoom"
-    (mapClick)="mapClick($event)"
-    (mapDblClick)="mapDobleClick($event)"
-  >
-    <agm-marker [latitude]="lat" [longitude]="lng">
-      <agm-info-window>
-        <div class="image">
-          <img class="avatar" src="{{ employee.photo }}" alt="" />
-        </div>
-        <h3>{{ employee.name }}</h3>
-        <p>You are Here!</p>
-      </agm-info-window>
-    </agm-marker>
-  </agm-map>
+<div class="mat-elevation-z8">
+  <div class="all" *ngIf="lat && lng">
+    <agm-map
+      style="height: 400px;"
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      [styles]="style"
+      (mapClick)="mapClick($event)"
+      (mapDblClick)="mapDobleClick($event)"
+      [title]="title"
+    >
+      <agm-marker [latitude]="lat" [longitude]="lng">
+        <!-- <agm-marker
+        **ngFor="let item of markers"
+        [latitude]="item.items.content['lat']"
+        [longitude]="item.items.content['lng']"
+        [iconUrl]="
+          'https//cdn1.iconfinder.com/data/icons/designer-s-tools-1/512/Coffe-64.png'
+        "
+      >
+      </agm-marker> -->
+        <agm-info-window>
+          <div class="image">
+            <img class="avatar" src="{{ employee.photo }}" alt="" />
+          </div>
+          <h3>{{ employee.name }}</h3>
+          <p>You are Here!</p>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
 </div>
+<h2 style="text-align: center;">Locations</h2>
+<!-- <div>
+  <pre *ngFor="let item of items | async">{{ item.content }}</pre>
+</div> -->

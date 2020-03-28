@@ -14,14 +14,19 @@
       alt=""
     />
   </mat-tab>
-  <mat-tab label="First">
-    <img
-      src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-      alt=""
-  /></mat-tab>
-  <mat-tab label="Second"><img src="" alt=""/></mat-tab>
+
   <mat-tab label="Third">
-    Maps
     <app-widget-maps></app-widget-maps>
+    <mat-divider></mat-divider>
+    <button mat-raised-button (click)="openBottomSheet()">
+      Select Region
+    </button>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <button mat-raised-button (click)="openBottomSheet2()">
+      Select Territorie
+    </button>
+    <mat-divider></mat-divider>
   </mat-tab>
+  <mat-divider></mat-divider>
 </mat-tab-group>

@@ -19,6 +19,7 @@ import { MatBadgeModule } from "@angular/material/badge";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { HighchartsChartModule } from "highcharts-angular";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
@@ -39,14 +40,9 @@ import { environment } from "src/environments/environment";
 ///// Google Map /////
 import { AgmCoreModule } from "@agm/core";
 import { AngularFireModule } from "@angular/fire";
-const config = {
-  apiKey: "AIzaSyB8iEA4M0B6f-SLOp9JEHrnvZpcANFTX3A",
-  authDomain: "<your-project-authdomain>",
-  databaseURL: "<your-database-URL>",
-  projectId: "jsfront-8d70f",
-  storageBucket: "<your-storage-bucket>",
-  messagingSenderId: "<your-messaging-sender-id>"
-};
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { BottomComponent } from './widgets/bottom/bottom.component';
+import { BottomTComponent } from './widgets/bottom-t/bottom-t.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +57,9 @@ const config = {
     BlogPostsComponent,
     BlogUsersComponent,
     MessageComponent,
-    MapsComponent
+    MapsComponent,
+    BottomComponent,
+    BottomTComponent
   ],
   imports: [
     CommonModule,
@@ -82,11 +80,14 @@ const config = {
     MatBadgeModule,
     MatButtonToggleModule,
     MatExpansionModule,
+    MatBottomSheetModule,
     MatSnackBarModule,
     RouterModule,
     HighchartsChartModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey })
   ],
   exports: [

@@ -22,6 +22,8 @@ export class RestApiService {
   //////// Observable-Subscribe ////////
   newPosts$ = new EventEmitter<Post>();
   editPosts$ = new EventEmitter<Post>();
+  newLocation$ = new EventEmitter<Event>();
+  newLocationT$ = new EventEmitter<number>();
   //////////////////////////////////////
 
   arrPosts: Post[];
