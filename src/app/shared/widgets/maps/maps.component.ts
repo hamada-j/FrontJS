@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Employee } from "src/app/model/employee";
+import { RestApiService } from "src/app/api.service";
 
 @Component({
   selector: "app-widget-maps",
@@ -9,9 +11,9 @@ export class MapsComponent implements OnInit {
   lat: number;
   lng: number;
   zoom: number;
-  constructor() {
-    this.lat = 51.678418;
-    this.lng = 7.809007;
+  userId: string;
+  employee: Employee;
+  constructor(private Api: RestApiService) {
     this.zoom = 9;
   }
   mapClick(event) {
@@ -20,5 +22,17 @@ export class MapsComponent implements OnInit {
   mapDobleClick(event) {
     console.log(event);
   }
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.getUserLocation();
+    this.userId = localStorage.getItem("userId");
+    this.employee = await this.Api.getEmployeeById(this.userId);
+  }
+  private getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+      });
+    }
+  }
 }

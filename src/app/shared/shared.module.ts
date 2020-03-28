@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { AgmCoreModule } from "@agm/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { MatDividerModule } from "@angular/material/divider";
@@ -35,9 +34,19 @@ import { BlogPostsComponent } from "./widgets/blog-posts/blog-posts.component";
 import { BlogUsersComponent } from "./widgets/blog-users/blog-users.component";
 import { MessageComponent } from "./widgets/message/message.component";
 import { MapsComponent } from "./widgets/maps/maps.component";
+///// environmentDEV /////
 import { environment } from "src/environments/environment";
-
-/// Google Map
+///// Google Map /////
+import { AgmCoreModule } from "@agm/core";
+import { AngularFireModule } from "@angular/fire";
+const config = {
+  apiKey: "AIzaSyB8iEA4M0B6f-SLOp9JEHrnvZpcANFTX3A",
+  authDomain: "<your-project-authdomain>",
+  databaseURL: "<your-database-URL>",
+  projectId: "jsfront-8d70f",
+  storageBucket: "<your-storage-bucket>",
+  messagingSenderId: "<your-messaging-sender-id>"
+};
 
 @NgModule({
   declarations: [

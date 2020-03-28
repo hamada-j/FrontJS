@@ -1,3 +1,29 @@
+.all {
+  height: 500px;
+}
 .agm-map {
-  height: 400px;
+  height: 800px;
+  max-width: 138px !important;
+}
+h3 {
+  text-align: center;
+  color: black;
+}
+p {
+  text-align: center;
+  color: black;
+}
+.image {
+  text-align: center;
+  width: 20%;
+  height: 20%;
+  margin-left: 40%;
+}
+.avatar {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

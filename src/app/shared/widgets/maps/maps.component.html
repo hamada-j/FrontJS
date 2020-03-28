@@ -1,4 +1,4 @@
-<div *ngIf="lat && lng">
+<div class="all" *ngIf="lat && lng">
   <agm-map
     style="height: 200px;"
     [latitude]="lat"
@@ -9,7 +9,11 @@
   >
     <agm-marker [latitude]="lat" [longitude]="lng">
       <agm-info-window>
-        You are here!
+        <div class="image">
+          <img class="avatar" src="{{ employee.photo }}" alt="" />
+        </div>
+        <h3>{{ employee.name }}</h3>
+        <p>You are Here!</p>
       </agm-info-window>
     </agm-marker>
   </agm-map>
