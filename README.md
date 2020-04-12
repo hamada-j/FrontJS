@@ -18,7 +18,7 @@ I have chosen SASS, becouse Sass is the most mature, stable, and powerful profes
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Server run in Heroku. 
 
 ## Code scaffolding
 
