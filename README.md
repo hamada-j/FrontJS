@@ -17,8 +17,8 @@ I have chosen SASS, becouse Sass is the most mature, stable, and powerful profes
 `$ npm i material-components-web`
 
 ## Development server
-
-Server run in Heroku. 
+FrontJS run in FireBase.
+Server run in Heroku.
 
 ## Code scaffolding
 
